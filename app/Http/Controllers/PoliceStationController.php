@@ -90,9 +90,11 @@ class PoliceStationController extends Controller
      * @param  \App\Models\Moldes\policeStation  $policeStation
      * @return \Illuminate\Http\Response
      */
-     function edit(policeStation $policeStation)
+     function edit($id)
     {
-        //
+        $id = base64_decode($id);
+       $getDataById =  policeStation::where('id', $id)->get();
+       return $getDataById;
     }
 
     /**

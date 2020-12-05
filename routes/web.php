@@ -29,6 +29,7 @@ Route::prefix('policeStation')->name('station.')->group(function () {
     Route::get('/station', [PoliceStationController::class, 'index'])->name('index');
     Route::get('/getform', [PoliceStationController::class, 'create'])->name('create');
     Route::post('/station', [PoliceStationController::class, 'store'])->name('store');
+    Route::get('/getdata/{id}', [PoliceStationController::class, 'edit'])->name('edit');
     
 });
 

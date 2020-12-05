@@ -35,7 +35,8 @@
                             <td>{{ $value->policeStationName }}</td>
                             <td>{{ $value->email }}</td>
                             <td>{{ $value->district }}</td>
-                            <td><a class="btn btn-info btn-sm" href={{$value->id}}>Edit</a> <a class="btn btn-danger btn-sm" href="">Delete</a></td>
+                            
+                            <td><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="">Delete</a></td>
                         </tr>
                        
                         @endforeach
