@@ -93,8 +93,11 @@ class PoliceStationController extends Controller
      function edit($id)
     {
         $id = base64_decode($id);
-       $getDataById =  policeStation::where('id', $id)->get();
-       return $getDataById;
+       $getDataById =  policeStation::find($id);
+
+       //return $getDataById;
+       
+       return view ('pages.policeStation.editStation', compact('getDataById'));
     }
 
     /**
@@ -104,9 +107,43 @@ class PoliceStationController extends Controller
      * @param  \App\Models\Moldes\policeStation  $policeStation
      * @return \Illuminate\Http\Response
      */
-     function update(Request $request, policeStation $policeStation)
+     public function update(Request $request, $id)
     {
-        //
+        $id = base64_decode($id);
+
+        $dataUpdate = policeStation::find($id);
+
+         //return $dataUpdate;
+        
+        $validatedData = $request->validate([
+            'policeStationName' => 'required',
+            'email' => 'required',
+            'district' => 'required',
+            'address' => 'required | max:250',
+        ]);
+
+        $data =[
+            'policeStationName' =>  $request->input('policeStationName'),
+            'email' =>  $request->input('email'),
+            'district' =>  $request->input('district'),
+            'address' =>  $request->input('address')
+        ];
+
+        
+        
+        
+
+        if ($dataUpdate->update($data)) {
+            return back()->with('added_recorded', 'Police Station Update Successfully');
+        }else{
+            return back()->with('error_recorded', 'Police Station Update Faild');
+        }
+
+
+
+
+
+
     }
 
     /**
@@ -115,8 +152,16 @@ class PoliceStationController extends Controller
      * @param  \App\Models\Moldes\policeStation  $policeStation
      * @return \Illuminate\Http\Response
      */
-     function destroy(policeStation $policeStation)
+     function destroy($id)
     {
-        //
+        $id = base64_decode($id);
+        $getData =  policeStation::find($id);
+        $result = $getData->delete();
+
+        if ($result == true) {
+            return back()->with('added_recorded', 'Police Station Delete Successfully');
+        }else{
+            return back()->with('error_recorded', 'Police Station Delete Successfully');
+        }
     }
 }

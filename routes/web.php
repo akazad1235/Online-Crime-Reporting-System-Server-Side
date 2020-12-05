@@ -30,6 +30,9 @@ Route::prefix('policeStation')->name('station.')->group(function () {
     Route::get('/getform', [PoliceStationController::class, 'create'])->name('create');
     Route::post('/station', [PoliceStationController::class, 'store'])->name('store');
     Route::get('/getdata/{id}', [PoliceStationController::class, 'edit'])->name('edit');
+    Route::post('/dataUpdate/{id}', [PoliceStationController::class, 'update'])->name('update');
+    Route::get('/delete/{id}', [PoliceStationController::class, 'destroy'])->name('delete');
+    
     
 });
 

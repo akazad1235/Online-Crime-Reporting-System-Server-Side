@@ -4,6 +4,17 @@
             <div class="col-sm-12">
                 <div class="card-box">
                     <h4 class="header-title font-weight-bold">All Police Station</h4>
+                    
+                        @if(Session::has('added_recorded'))
+                            <script>
+                                toastr.success("{!!Session::get('added_recorded')!!}");
+                            </script>
+                        @endif
+                         @if(Session::has('error_recorded'))
+                            <script>
+                                toastr.error("{!!Session::get('error_recorded')!!}");
+                            </script>
+                        @endif
 
                     <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>
                     <table id="demo-custom-toolbar"  data-toggle="table"
@@ -36,7 +47,7 @@
                             <td>{{ $value->email }}</td>
                             <td>{{ $value->district }}</td>
                             
-                            <td><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="">Delete</a></td>
+                            <td><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
                         </tr>
                        
                         @endforeach
