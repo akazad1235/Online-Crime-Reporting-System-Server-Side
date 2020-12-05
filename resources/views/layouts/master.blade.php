@@ -22,6 +22,10 @@
         <link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('admin/css/app.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/css/toastr.css')}}" rel="stylesheet" type="text/css" />
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        
         
 
     </head>
@@ -68,6 +72,7 @@
         <!-- END wrapper -->
 
         <!-- Vendor js -->
+
         <script src="{{asset('admin/js/vendor.min.js')}}"></script>
 
         <!-- Plugins js-->
@@ -92,6 +97,17 @@
         <!-- App js-->
         <script src="{{asset('admin/js/app.min.js')}}"></script>
         
+        
+
+
+        
+            <script>
+            if () {
+                
+            }
+                toastr.success("{!!Session::get('added_recorded')!!}");
+            </script>
+      
     </body>
 
 <!-- Mirrored from coderthemes.com/ubold/layouts/light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Jan 2020 14:10:35 GMT -->

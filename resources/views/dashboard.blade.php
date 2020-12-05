@@ -1,9 +1,6 @@
 @extends('layouts.master')
 @section('content')
 <div class="container-fluid">
-                        
-
-
                         <div class="row">
                             <div class="col-md-6 col-xl-3">
                                 <div class="widget-rounded-circle card-box">

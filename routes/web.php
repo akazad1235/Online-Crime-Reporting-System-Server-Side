@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\stationController;
+use App\Http\Controllers\PoliceStationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +18,20 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/station', [stationController::class, 'index']);
+// Route::get('/station', [PoliceStationController::class, 'index']);
+
+// Route::post('/station', [PoliceStationController::class, 'store']);
+
+
+//station is creating the group
+Route::prefix('policeStation')->name('station.')->group(function () {
+
+    Route::get('/station', [PoliceStationController::class, 'index'])->name('index');
+    Route::get('/getform', [PoliceStationController::class, 'create'])->name('create');
+    Route::post('/station', [PoliceStationController::class, 'store'])->name('store');
+    
+});
+
+
+
+
