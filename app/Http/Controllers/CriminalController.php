@@ -15,7 +15,8 @@ class CriminalController extends Controller
      */
     public function index()
     {
-        //
+       $allCrimicals =  Criminal::get();
+        return view('pages.criminals.criminals', compact('allCrimicals'));
     }
 
     /**
