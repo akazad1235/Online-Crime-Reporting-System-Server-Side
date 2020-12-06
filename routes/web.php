@@ -43,6 +43,7 @@ Route::prefix('district')->name('district.')->group(function () {
     Route::post('/district', [DistrictController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [DistrictController::class, 'edit'])->name('edit');
     Route::post('/update/{id}', [DistrictController::class, 'update'])->name('update');
+    Route::get('/delete/{id}', [DistrictController::class, 'destroy'])->name('delete');
     
 });
 

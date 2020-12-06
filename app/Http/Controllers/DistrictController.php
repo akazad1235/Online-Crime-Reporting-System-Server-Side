@@ -95,9 +95,9 @@ class DistrictController extends Controller
             'district' => $name
         ];
         if ($getDistrict->update($data) == true) {
-            return back()->with('added_recorded', 'District Added Successfully');
+            return back()->with('added_recorded', 'District Update Successfully');
         }else{
-            return back()->with('error_recorded', 'District Added Faild');
+            return back()->with('error_recorded', 'District Update Faild');
         }
 
 
@@ -109,8 +109,16 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function destroy(District $district)
+    public function destroy($id)
     {
-        //
+        $id = base64_decode($id);
+       $delDst =  District::find($id);
+      
+       if ($delDst->delete() == true) {
+            return back()->with('added_recorded', 'District Delete Successfully');
+        }else{
+            return back()->with('error_recorded', 'District Delete Faild');
+        }
+
     }
 }
