@@ -23,6 +23,22 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="javascript: void(0);">
+                    <i class="fe-pocket"></i>
+                    <span>District </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level" aria-expanded="false">
+                    <li>
+                        <a href="{{route('district.index')}}">All District</a>
+                    </li>
+                    <li>
+                        <a href="{{route('district.create')}}">Add District</a>
+                    </li>
+                    
+                </ul>
+            </li>
 
             <li>
                 <a href="javascript: void(0);">

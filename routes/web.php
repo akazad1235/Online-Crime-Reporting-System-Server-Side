@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PoliceStationController;
+use App\Http\Controllers\DistrictController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,17 @@ Route::prefix('policeStation')->name('station.')->group(function () {
     Route::get('/getdata/{id}', [PoliceStationController::class, 'edit'])->name('edit');
     Route::post('/dataUpdate/{id}', [PoliceStationController::class, 'update'])->name('update');
     Route::get('/delete/{id}', [PoliceStationController::class, 'destroy'])->name('delete');
-    
+});
+
+//station is creating the group
+Route::prefix('district')->name('district.')->group(function () {
+
+    Route::get('/showAll', [DistrictController::class, 'index'])->name('index');
+    Route::get('/district', [DistrictController::class, 'create'])->name('create');
+    Route::post('/district', [DistrictController::class, 'store'])->name('store');
     
 });
+
 
 
 
