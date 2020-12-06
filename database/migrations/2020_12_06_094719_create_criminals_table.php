@@ -18,7 +18,7 @@ class CreateCriminalsTable extends Migration
             $table->string('name');
             $table->string('desc');
             $table->string('image');
-            $table->string('status');
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

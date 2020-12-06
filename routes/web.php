@@ -51,9 +51,9 @@ Route::prefix('district')->name('district.')->group(function () {
 //criminals is create the group
 Route::prefix('criminals')->name('criminals.')->group(function () {
 
-    Route::get('/criminals', [CriminalController::class, 'create'])->name('create');
+    Route::get('/create', [CriminalController::class, 'create'])->name('create');
+    Route::post('/store', [CriminalController::class, 'store'])->name('store');
 
-    
 });
 
 

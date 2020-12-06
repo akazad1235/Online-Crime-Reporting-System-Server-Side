@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Criminal;
 use Illuminate\Http\Request;
+use Image;
 
 class CriminalController extends Controller
 {
@@ -36,7 +37,28 @@ class CriminalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $name = $request->input('name');
+        $desc = $request->input('desc');
+        $image = $request->file('image');
+        // return $image;
+        $fileName = rand(0, 999999999) . '_' . date('Ymdhis').'_' . rand(100, 999999999) . '.' . $image->getClientOriginalExtension();
+       // return $fileName;
+       Image::make($image)->resize(200, 200)->save(public_path('admin/images/criminals/').$fileName );
+
+       $create = Criminal::create([
+           'name' => $name,
+           'image' => $fileName,
+           'desc' => $desc
+       ]);
+       if ($create == true) {
+           return back()->with('added_recorded', 'Criminals Added Successfully');
+       }else {
+           return back()->with('error_recorded', 'Criminals Added Faild');
+       }
+
+
+
     }
 
     /**

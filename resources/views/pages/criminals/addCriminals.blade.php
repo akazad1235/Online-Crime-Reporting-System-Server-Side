@@ -31,7 +31,7 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="{{route('criminals.create')}}" method="post">
+                            <form action="{{route('criminals.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
                                     <label for="simpleinput">Name<apan class="text-danger">*</apan></label>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="example-email">Image<apan class="text-danger">*</apan></label>
-                                    <input type="file" id="example-email" name="desc" class="form-control" placeholder="Criminals Description" required >
+                                    <input type="file" id="example-email" name="image" class="form-control" >
                                 </div>
 
                                 <div class="form-group mb-3">
