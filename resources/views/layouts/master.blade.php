@@ -15,6 +15,14 @@
         <!-- Plugins css -->
         <link href="{{asset('admin/libs/flatpickr/flatpickr.min.css')}}" rel="stylesheet" type="text/css" />
 
+        <!-- <link href="{{asset('admin/libs/jquery-nice-select/nice-select.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/libs/switchery/switchery.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/libs/multiselect/multi-select.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('admin/libs/select2/select2.min.css')}}" rel="stylesheet" type="text/css" /> -->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+
           <!-- Bootstrap Tables css -->
           <link href="{{asset('admin/libs/bootstrap-table/bootstrap-table.min.css')}}" rel="stylesheet" type="text/css" />
 
@@ -23,8 +31,15 @@
         <link href="{{asset('admin/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('admin/css/app.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('admin/css/toastr.css')}}" rel="stylesheet" type="text/css" />
+
+
+
+
+
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+
         
         
 
@@ -84,6 +99,14 @@
         <script src="{{asset('admin/libs/flot-charts/jquery.flot.tooltip.min.js')}}"></script>
         <script src="{{asset('admin/libs/flot-charts/jquery.flot.selection.js')}}"></script>
         <script src="{{asset('admin/libs/flot-charts/jquery.flot.crosshair.js')}}"></script>
+
+        <!-- <script src="{{asset('admin/libs/jquery-nice-select/jquery.nice-select.min.js')}}"></script>
+        <script src="{{asset('admin/libs/switchery/switchery.min.js')}}"></script>
+        <script src="{{asset('admin/libs/multiselect/jquery.multi-select.js')}}"></script>
+        <script src="{{asset('admin/libs/select2/select2.min.js')}}"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
 
         <!-- Dashboar 1 init js-->
         <script src="{{asset('admin/js/pages/dashboard-1.init.js')}}"></script>

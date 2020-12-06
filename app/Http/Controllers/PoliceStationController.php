@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\policeStation;
+use App\Models\District;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Brian2694\Toastr\Facades\Toastr;
@@ -29,7 +30,8 @@ class PoliceStationController extends Controller
      */
     public function create()
     {
-        return view ('pages.policeStation.addStation');
+        $district = District::orderBy('district', 'asc')->get();
+        return view ('pages.policeStation.addStation', compact('district'));
     }                                                                          
 
     /**

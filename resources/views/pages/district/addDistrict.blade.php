@@ -38,6 +38,7 @@
                                     <input type="text" id="simpleinput" class="form-control" name="district" placeholder="Enter District Name" required  />
                                 </div>
                                
+                               
                                 <div class="form-group mb-3">
                                     <label for="example-textarea"></label>
                                     <input type="submit"  class="btn btn-danger"  value="submit">

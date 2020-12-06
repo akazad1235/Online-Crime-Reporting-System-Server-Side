@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title font-weight-bold">Add Police Station</h4>
+                    <h4 class="header-title font-weight-bold">Add Criminals</h4>
                     <p class="sub-header">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -31,29 +31,20 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="{{route('station.store')}}" method="post">
+                            <form action="{{route('criminals.create')}}" method="post">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label for="simpleinput">Station Name<apan class="text-danger">*</apan></label>
-                                    <input type="text" id="simpleinput" class="form-control" name="policeStationName" placeholder="Enter Police Station Name" require>
+                                    <label for="simpleinput">Name<apan class="text-danger">*</apan></label>
+                                    <input type="text" id="simpleinput" class="form-control" name="name" placeholder="Criminals Name" required />
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="example-email">Image<apan class="text-danger">*</apan></label>
+                                    <input type="file" id="example-email" name="desc" class="form-control" placeholder="Criminals Description" required >
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="example-email">Email<apan class="text-danger">*</apan></label>
-                                    <input type="email" id="example-email" name="email" class="form-control" placeholder="Email" require>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="dest">District<apan class="text-danger">*</apan></label>
-                                    <select class="selectpicker" data-live-search="true" name="district"  data-style="btn-light">
-                                            <option>Select District</option>
-                                            @foreach ($district as $value)
-                                            <option value="{{$value->district}}">{{$value->district}}</option>
-                                            @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group mb-3">
-                                    <label for="example-textarea">Address<apan class="text-danger">*</apan></label>
-                                    <textarea class="form-control" id="example-textarea" rows="5" name="address" placeholder="Enter Police Stattion Adderess"></textarea>
+                                    <label for="example-textarea">desc<apan class="text-danger">*</apan></label>
+                                    <textarea class="form-control" id="example-textarea" rows="5" name="desc" rows="5" name="address" placeholder="Criminals Description"></textarea>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="example-textarea"></label>
