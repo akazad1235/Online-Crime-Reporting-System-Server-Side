@@ -71,9 +71,11 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function edit(District $district)
+    public function edit($id)
     {
-        //
+        $id = base64_decode($id);
+       $districtByID =  District::find($id);
+       return view('pages.district.edit', compact('districtByID'));
     }
 
     /**
@@ -83,9 +85,22 @@ class DistrictController extends Controller
      * @param  \App\Models\District  $district
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, District $district)
+    public function update(Request $request,  $id)
     {
-        //
+        $id = base64_decode($id);
+        $getDistrict = District::find($id);
+       
+        $name = $request->input('district');
+        $data = [
+            'district' => $name
+        ];
+        if ($getDistrict->update($data) == true) {
+            return back()->with('added_recorded', 'District Added Successfully');
+        }else{
+            return back()->with('error_recorded', 'District Added Faild');
+        }
+
+
     }
 
     /**

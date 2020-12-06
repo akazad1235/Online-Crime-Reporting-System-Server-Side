@@ -36,11 +36,10 @@
 
                         <tbody>
                         @foreach($allDistrict as $value)
-
                         <tr>
                             <td></td>
                             <td>{{ $value->district }}</td>
-                            <td><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
+                            <td><a class="btn btn-info btn-sm" href="{{ route('district.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="">Delete</a></td>
                         </tr>
                         @endforeach
                        
