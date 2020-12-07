@@ -45,7 +45,9 @@
                             <td>{{ $value->name }}</td>
                            <td><img style="width:80px; height:50px; border-radius:5px" src="{{asset('admin/images/criminals/'.$value->image)}}" /></td>
                             <td>{{ substr($value->desc, 0, 20) }}</td>
-                            <td>{{ date("d-m-Y", strtotime($value->created_at)) }}</td>
+                            {{-- <td>{{ date("d-m-Y", strtotime($value->updated_at)) }}</td> --}}
+
+                            <td>{{ $value->updated_at->diffForHumans() }}</td>
                             
                             <td><span class="badge badge-{{$value->status == 1?'success':'danger'}}">{{$value->status == 1 ? 'Arrest ': 'Warrant'}}</span></td>
                             <td><a class="btn btn-info btn-sm" href="{{ route('criminals.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('criminals.delete', base64_encode($value->id))}}">Delete</a></td>

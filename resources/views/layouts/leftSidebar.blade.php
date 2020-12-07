@@ -68,6 +68,19 @@
                     </li>
                 </ul>
             </li>
+            <li>
+                <a href="javascript: void(0);">
+                    <i class="fe-pocket"></i>
+                    <span>Users </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level" aria-expanded="false">
+                   
+                    <li>
+                        <a href="{{route('users.create')}}">Add Users</a>
+                    </li>
+                </ul>
+            </li>
 
             <li>
                 <a href="javascript: void(0);">

@@ -5,6 +5,7 @@ use App\Http\Controllers\PoliceStationController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\CriminalController;
 use App\Http\Controllers\ComplainController;
+use App\Http\Controllers\userController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,14 +63,21 @@ Route::prefix('criminals')->name('criminals.')->group(function () {
 
 });
 
-//criminals is create the group
+//Coplain is create the group
 Route::prefix('complain')->name('complain.')->group(function () {
 
     Route::get('/index', [ComplainController::class, 'index'])->name('index');
  
-    
-
 });
+
+//Users is create the group
+Route::prefix('users')->name('users.')->group(function () {
+
+    Route::get('/create', [userController::class, 'create'])->name('create');
+    Route::post('/store', [userController::class, 'store'])->name('store');
+ 
+});
+
 
 
 
