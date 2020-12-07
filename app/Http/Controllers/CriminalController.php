@@ -79,9 +79,12 @@ class CriminalController extends Controller
      * @param  \App\Models\Criminal  $criminal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Criminal $criminal)
+    public function edit($id)
     {
-        //
+        $id = base64_decode($id);
+        $getDataById = Criminal::find($id);
+        return view('pages.criminals.editCriminals', compact('getDataById'));
+
     }
 
     /**
@@ -91,9 +94,39 @@ class CriminalController extends Controller
      * @param  \App\Models\Criminal  $criminal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Criminal $criminal)
+    public function update(Request $request, $id)
     {
-        //
+        $id = base64_decode($id);
+        $getCriminal = Criminal::find($id);
+        $allImage = $getCriminal->image;
+
+        //return $getCriminal->image;
+
+        $name = $request->input('name');
+        $desc = $request->input('desc');
+        $image = $request->file('image');
+
+
+        if(empty($image)){
+           $data = [
+               'name' => $name,
+               'desc' => $desc
+           ];
+           $getCriminal->update($data);
+           return back();
+
+        }else{
+            $fileName = rand(0, 999999999) . '_' . date('Ymdhis').'_' . rand(100, 999999999) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(200, 200)->save(public_path('admin/images/criminals/').$fileName );
+            unlink(public_path('admin/images/criminals/'.$allImage));
+            $data = [
+                'name' => $name,
+                'desc' => $desc,
+                'image' => $fileName
+            ];
+            $getCriminal->update($data);
+           return back();
+        }
     }
 
     /**

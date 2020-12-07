@@ -54,7 +54,8 @@ Route::prefix('criminals')->name('criminals.')->group(function () {
     Route::get('/index', [CriminalController::class, 'index'])->name('index');
     Route::get('/create', [CriminalController::class, 'create'])->name('create');
     Route::post('/store', [CriminalController::class, 'store'])->name('store');
-    Route::post('/edit/{id}', [CriminalController::class, 'edit'])->name('edit');
+    Route::get('/edit/{id}', [CriminalController::class, 'edit'])->name('edit');
+    Route::post('/update/{id}', [CriminalController::class, 'update'])->name('update');
     
 
 });

@@ -31,27 +31,27 @@
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <form action="{{route('criminals.store')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('criminals.update', base64_encode($getDataById->id))}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
                                     <label for="simpleinput">Name<apan class="text-danger">*</apan></label>
-                                    <input type="text" id="simpleinput" class="form-control" name="name" placeholder="Criminals Name" required />
+                                    <input type="text" id="simpleinput" class="form-control" name="name" value="{{$getDataById->name}}" required />
                                 </div>
                                 <div class="form-group mb-3">
                                     
+                                        <img src="{{asset('admin/images/criminals/'.$getDataById->image)}}" /><br>
+                                    
                                     <label for="example-email">Image<apan class="text-danger">*</apan></label>
-                                    <input type="file" id="example-email" name="image" class="form-control" onChange="loadFile(event)"/>
-                                    <img id="output" style="width:200px; height:200px; margin:3px" />
-                    
+                                    <input type="file" id="example-email" name="image" class="form-control" >
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="example-textarea">desc<apan class="text-danger">*</apan></label>
-                                    <textarea class="form-control" id="example-textarea" rows="5" name="desc" rows="5" name="address" placeholder="Criminals Description"></textarea>
+                                    <label for="example-textarea">Description<apan class="text-danger">*</apan></label>
+                                    <textarea class="form-control" id="example-textarea" rows="5" name="desc" rows="5" name="address">{{$getDataById->desc}}</textarea>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="example-textarea"></label>
-                                    <input type="submit"  class=" btn btn-danger"  value="submit">
+                                    <input type="submit"  class=" btn btn-danger"  value="Update">
                                 </div>
                             </form>
                         </div> <!-- end col -->
@@ -62,11 +62,4 @@
             </div> <!-- end card -->
         </div><!-- end col -->
     </div>
-    <script>
-
-        const loadFile = (event) => {
-           let file = document.getElementById('output');
-           file.src = URL.createObjectURL(event.target.files[0]);
-        }
-    </script>
 @endsection
