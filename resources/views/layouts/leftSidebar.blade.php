@@ -8,7 +8,7 @@
         <ul class="metismenu" id="side-menu">
 
             <li class="menu-title">Navigation</li>
-            <li>
+            <li >
                 <a href="javascript: void(0);">
                     <i class="fe-pocket"></i>
                     <span> Police Station </span>
@@ -55,16 +55,16 @@
                     </li>
                 </ul>
             </li>
-
             <li>
                 <a href="javascript: void(0);">
-                    <i class="fe-users"></i>
-                    <span> Complain </span>
+                    <i class="fe-pocket"></i>
+                    <span>Complain </span>
                     <span class="menu-arrow"></span>
                 </a>
                 <ul class="nav-second-level" aria-expanded="false">
+                   
                     <li>
-                        <a href="crm-dashboard.html">View Complain</a>
+                        <a href="{{route('complain.index')}}">Complain</a>
                     </li>
                 </ul>
             </li>

@@ -3,7 +3,7 @@
 <div class="row">
             <div class="col-sm-12">
                 <div class="card-box">
-                    <h4 class="header-title font-weight-bold">All Criminals List</h4>
+                    <h4 class="header-title font-weight-bold">All Police Station</h4>
                     
                         @if(Session::has('added_recorded'))
                             <script>
@@ -29,27 +29,27 @@
                         <thead class="thead-light">
                         <tr>
                             <th data-field="state" data-checkbox="true"></th>
-                            <th data-field="nate" data-sortable="true" data-formatter="dateFormatter">Name</th>
-                            <th data-field="image" data-sortable="true" data-formatter="dateFormatter">Image</th>
-                            <th data-field="desc" data-sortable="true" data-formatter="dateFormatter">Description</th>
-                            <th data-field="create_date" data-sortable="true" data-formatter="dateFormatter">Create Date</th>
-                            <th data-field="status" data-sortable="true" data-formatter="dateFormatter">Status</th>
+                            <th data-field="name" data-sortable="true" >Name</th>
+                            <th data-field="station" data-sortable="true">Station</th>
+                            <th data-field="complainName" data-sortable="true">Complain Name</th>
+                            <th data-field="status" data-sortable="true">Status</th>
                             <th data-field="action" data-sortable="true">Action</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($allCrimicals as $value)
-                        <tr>
+                        @foreach($allComplain as $value)
+
+                             <tr>
                             <td></td>
                             <td>{{ $value->name }}</td>
-                           <td><img style="width:80px; height:50px; border-radius:5px" src="{{asset('admin/images/criminals/'.$value->image)}}" /></td>
-                            <td>{{ substr($value->desc, 0, 20) }}</td>
-                            <td>{{ date("d-m-Y", strtotime($value->created_at)) }}</td>
-                            
-                            <td><span class="badge badge-{{$value->status == 1?'success':'danger'}}">{{$value->status == 1 ? 'Arrest ': 'Warrant'}}</span></td>
-                            <td><a class="btn btn-info btn-sm" href="{{ route('criminals.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('criminals.delete', base64_encode($value->id))}}">Delete</a></td>
+                            <td>{{ $value->policeStationName }}</td>
+                            <td>{{ $value->complain_name }}</td>
+                            <td><span class="badge  badge-{{ randomStatusColor($value->status) }} text-capitalize">{{$value->status}}</span></td>
+
+                            <td> <a class="btn btn-warning btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Info</a> <a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
                         </tr>
+                       
                         @endforeach
                        
                         

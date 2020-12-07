@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PoliceStationController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\CriminalController;
+use App\Http\Controllers\ComplainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,16 @@ Route::prefix('criminals')->name('criminals.')->group(function () {
     
 
 });
+
+//criminals is create the group
+Route::prefix('complain')->name('complain.')->group(function () {
+
+    Route::get('/index', [ComplainController::class, 'index'])->name('index');
+ 
+    
+
+});
+
 
 
 
