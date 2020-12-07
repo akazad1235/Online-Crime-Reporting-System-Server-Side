@@ -3,7 +3,7 @@
 <div class="row">
             <div class="col-sm-12">
                 <div class="card-box">
-                    <h4 class="header-title font-weight-bold">All Police Station</h4>
+                    <h4 class="header-title font-weight-bold">All Criminals List</h4>
                     
                         @if(Session::has('added_recorded'))
                             <script>

@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title font-weight-bold">Add Criminals</h4>
+                    <h4 class="header-title font-weight-bold">Edit Criminals</h4>
                     <p class="sub-header">
                         @if ($errors->any())
                             <div class="alert alert-danger">
