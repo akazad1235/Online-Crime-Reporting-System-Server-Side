@@ -135,8 +135,22 @@ class CriminalController extends Controller
      * @param  \App\Models\Criminal  $criminal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Criminal $criminal)
+    public function destroy($id)
     {
-        //
+        $id = base64_decode($id);
+        $deleteCriminals = Criminal::find($id);
+        //return $deleteCriminals;
+        $image = $deleteCriminals->image;
+        
+
+        if ($deleteCriminals->delete()) {
+            
+            unlink(public_path('admin/images/criminals/'.$image));
+            return back()->with('added_recorded', 'Criminals Delete Successfully');
+        }else{
+            return back()->with('error_recorded', 'Criminals Delete Faild');
+        }
+
+        
     }
 }

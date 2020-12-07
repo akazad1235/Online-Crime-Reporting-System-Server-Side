@@ -47,7 +47,7 @@
                             <td>{{ substr($value->desc, 0, 50) }}</td>
                             <td>{{ date("d-m-Y", strtotime($value->created_at)) }}</td>
                             <td>{{ $value->status }}</td>
-                            <td><a class="btn btn-info btn-sm" href="{{ route('criminals.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="">Delete</a></td>
+                            <td><a class="btn btn-info btn-sm" href="{{ route('criminals.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('criminals.delete', base64_encode($value->id))}}">Delete</a></td>
                         </tr>
                         @endforeach
                        
