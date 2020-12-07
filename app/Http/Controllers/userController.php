@@ -15,7 +15,9 @@ class userController extends Controller
      */
     public function index()
     {
-        //
+        $allUser = User::get();
+
+        return view ('pages.users.manageUser', compact('allUser'));
     }
 
     /**

@@ -73,6 +73,7 @@ Route::prefix('complain')->name('complain.')->group(function () {
 //Users is create the group
 Route::prefix('users')->name('users.')->group(function () {
 
+    Route::get('/index', [userController::class, 'index'])->name('index');
     Route::get('/create', [userController::class, 'create'])->name('create');
     Route::post('/store', [userController::class, 'store'])->name('store');
  

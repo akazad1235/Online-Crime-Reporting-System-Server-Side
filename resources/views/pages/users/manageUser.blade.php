@@ -29,22 +29,24 @@
                         <thead class="thead-light">
                         <tr>
                             <th data-field="state" data-checkbox="true"></th>
-                            <th data-field="id" data-sortable="true" >Station Code</th>
+                            <th data-field="id" data-sortable="true" >Station</th>
                             <th data-field="name" data-sortable="true">Name</th>
                             <th data-field="email" data-sortable="true">Email</th>
-                            <th data-field="date" data-sortable="true" data-formatter="dateFormatter">District</th>
+                            <th data-field="uesr_rules" data-sortable="true" data-formatter="dateFormatter">User Rules</th>
+                            <th data-field="status" data-sortable="true" data-formatter="dateFormatter">Status</th>
                             <th data-field="action" data-sortable="true">Action</th>
                         </tr>
                         </thead>
 
                         <tbody>
-                        @foreach($getAllStation as $value)
+                        @foreach($allUser as $value)
                              <tr>
                             <td></td>
-                            <td>{{ $value->stationCode }}</td>
-                            <td>{{ $value->policeStationName }}</td>
+                            <td>{{ $value->station }}</td>
+                            <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
-                            <td>{{ $value->district }}</td>
+                            <td>{{ $value->user_role }}</td>
+                            <td><span class="badge  badge-{{($value->status == 1 ? 'success' : 'danger' ) }} text-capitalize">{{$value->status ==1 ? 'Active':'Inactive' }}</span></td>
                             <td><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
                         </tr>
                         @endforeach

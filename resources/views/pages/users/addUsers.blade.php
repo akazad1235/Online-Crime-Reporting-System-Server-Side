@@ -45,7 +45,7 @@
                                 <div class="form-group mb-3">
                                     <label for="dest">Police Station<apan class="text-danger">*</apan></label>
                                     <select class="selectpicker" data-live-search="true" name="station"  data-style="btn-light">
-                                            <option>Select District</option>
+                                            <option>Choose..</option>
                                             @foreach ($getSation as $value)
                                             <option value="{{$value->id}}">{{$value->policeStationName}}</option>
                                             @endforeach

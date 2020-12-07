@@ -79,6 +79,9 @@
                     <li>
                         <a href="{{route('users.create')}}">Add Users</a>
                     </li>
+                    <li>
+                        <a href="{{route('users.index')}}">Mange Users</a>
+                    </li>
                 </ul>
             </li>
 
