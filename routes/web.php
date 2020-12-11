@@ -6,6 +6,8 @@ use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\CriminalController;
 use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\HomeController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,12 @@ use App\Http\Controllers\userController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
+
+
+
 
 // Route::get('/station', [PoliceStationController::class, 'index']);
 
@@ -79,9 +84,11 @@ Route::prefix('users')->name('users.')->group(function () {
  
 });
 
+Auth::routes(['register' => false]);
 
 
-
-
-
+Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('admin/dashboard', [HomeController::class, 'dashboard']);
+});
 

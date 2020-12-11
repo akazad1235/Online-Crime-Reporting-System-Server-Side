@@ -20,7 +20,7 @@ class User extends Authenticatable
         'station',
         'name',
         'email',
-        'user_rule',
+        'user_role',
         'status',
         'password',
     ];
