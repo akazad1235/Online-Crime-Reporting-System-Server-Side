@@ -79,7 +79,7 @@
 <!-- Mirrored from coderthemes.com/ubold/layouts/light/pages-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Jan 2020 14:11:16 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>UBold - Responsive Admin Dashboard Template</title>
+        <title>Admin Login..</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -109,6 +109,16 @@
                                         <span><img src="assets/images/logo-dark.png" alt="" height="22"></span>
                                     </a>
                                     <p class="text-muted mb-4 mt-3 font-weight-bold">Admin Login</p>
+
+                                    @if (session()->get('error'))
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        {{ session()->get('error')}}
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    @endif
+
                                 </div>
 
                                 <form method="POST" action="{{ route('login') }}">
