@@ -10,5 +10,12 @@ class policeStation extends Model
     use HasFactory;
 
 
-    protected $fillable = ['policeStationName', 'email', 'stationCode', 'district', 'address'];
+    protected $fillable = [
+        'district_id',
+        'policeStationName',
+        'email',
+        'stationCode',
+        'district',
+        'address'
+    ];
 }

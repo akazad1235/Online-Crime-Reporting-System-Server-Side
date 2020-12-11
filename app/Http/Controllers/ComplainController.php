@@ -17,7 +17,7 @@ class ComplainController extends Controller
         
        $allComplain = DB::table('complains')
                         ->join('registrations', 'complains.reg_id', '=' , 'registrations.id')
-                        ->join('police_stations', 'complains.policeStation_id', '=', 'police_stations.id',)
+                        ->join('police_stations', 'complains.station_id', '=', 'police_stations.id',)
                         ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
                         ->get();
 

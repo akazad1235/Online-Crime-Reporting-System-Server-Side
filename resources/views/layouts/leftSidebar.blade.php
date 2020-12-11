@@ -39,22 +39,25 @@
                     
                 </ul>
             </li>
-            <li>
-                <a href="javascript: void(0);">
-                    <i class="fe-pocket"></i>
-                    <span>Criminals </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul class="nav-second-level" aria-expanded="false">
-                   
-                    <li>
-                        <a href="{{route('criminals.create')}}">Add Criminals</a>
-                    </li>
-                    <li>
-                        <a href="{{route('criminals.index')}}">Manage Criminals</a>
-                    </li>
-                </ul>
-            </li>
+            @if(auth()->user()->is_admin == 1)
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-pocket"></i>
+                        <span>Criminals </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                    
+                        <li>
+                            <a href="{{route('criminals.create')}}">Add Criminals</a>
+                        </li>
+                        <li>
+                            <a href="{{route('criminals.index')}}">Manage Criminals</a>
+                        </li>
+                    </ul>
+                </li>
+                    @endif
+           
             <li>
                 <a href="javascript: void(0);">
                     <i class="fe-pocket"></i>

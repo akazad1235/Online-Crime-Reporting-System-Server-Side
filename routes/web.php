@@ -89,6 +89,6 @@ Auth::routes(['register' => false]);
 
 Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('admin/dashboard', [HomeController::class, 'dashboard']);
+    Route::get('admin/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
 });
 
