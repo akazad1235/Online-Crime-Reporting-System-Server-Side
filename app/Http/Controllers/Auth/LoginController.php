@@ -68,7 +68,7 @@ class LoginController extends Controller
             }else{
                 if ($userCount == 1) {
                     session(['stationId'=>$getStationId]);
-                    return redirect()->route('home');
+                    return redirect()->route('admin.dashboard');
                 }
                 
                 

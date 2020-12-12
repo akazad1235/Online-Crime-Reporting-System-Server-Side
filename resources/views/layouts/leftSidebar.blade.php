@@ -8,38 +8,44 @@
         <ul class="metismenu" id="side-menu">
 
             <li class="menu-title">Navigation</li>
-            <li >
-                <a href="javascript: void(0);">
-                    <i class="fe-pocket"></i>
-                    <span> Police Station </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul class="nav-second-level" aria-expanded="false">
-                    <li>
-                        <a href="{{route('station.create')}}">Add Station</a>
-                    </li>
-                    <li>
-                        <a href="{{route('station.index')}}">All Station</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript: void(0);">
-                    <i class="fe-pocket"></i>
-                    <span>District </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul class="nav-second-level" aria-expanded="false">
-                    <li>
-                        <a href="{{route('district.index')}}">All District</a>
-                    </li>
-                    <li>
-                        <a href="{{route('district.create')}}">Add District</a>
-                    </li>
-                    
-                </ul>
-            </li>
-            @if(auth()->user()->is_admin == 1 || auth()->user()->station == 2)
+            
+            @if(auth()->user()->is_admin == 1)
+                <li >
+                    <a href="javascript: void(0);">
+                        <i class="fe-pocket"></i>
+                        <span> Police Station </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="{{route('station.create')}}">Add Station</a>
+                        </li>
+                        <li>
+                            <a href="{{route('station.index')}}">All Station</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+          
+            @if(auth()->user()->is_admin == 1)
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-pocket"></i>
+                        <span>District </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                        <li>
+                            <a href="{{route('district.index')}}">All District</a>
+                        </li>
+                        <li>
+                            <a href="{{route('district.create')}}">Add District</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+            @endif
+            @if(auth()->user()->is_admin == 1)
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-pocket"></i>
@@ -56,7 +62,7 @@
                         </li>
                     </ul>
                 </li>
-                    @endif
+             @endif
            
             <li>
                 <a href="javascript: void(0);">
@@ -71,22 +77,25 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="javascript: void(0);">
-                    <i class="fe-pocket"></i>
-                    <span>Users </span>
-                    <span class="menu-arrow"></span>
-                </a>
-                <ul class="nav-second-level" aria-expanded="false">
-                   
-                    <li>
-                        <a href="{{route('users.create')}}">Add Users</a>
-                    </li>
-                    <li>
-                        <a href="{{route('users.index')}}">Mange Users</a>
-                    </li>
-                </ul>
-            </li>
+            @if(auth()->user()->is_admin == 1)
+                <li>
+                    <a href="javascript: void(0);">
+                        <i class="fe-pocket"></i>
+                        <span>Users </span>
+                        <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="nav-second-level" aria-expanded="false">
+                    
+                        <li>
+                            <a href="{{route('users.create')}}">Add Users</a>
+                        </li>
+                        <li>
+                            <a href="{{route('users.index')}}">Mange Users</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
+          
 
             <li>
                 <a href="javascript: void(0);">

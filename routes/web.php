@@ -20,9 +20,9 @@ use GuzzleHttp\Middleware;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
 
 
 
@@ -88,7 +88,15 @@ Auth::routes(['register' => false]);
 
 
 Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('admin/dashboard', [HomeController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/', [HomeController::class, 'dashboard']);
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+
+        Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+        Route::get('/home', [HomeController::class, 'dashboard']);
+     
+    });
+
+  
 });
 
