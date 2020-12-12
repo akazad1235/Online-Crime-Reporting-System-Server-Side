@@ -43,10 +43,6 @@
                                     <input type="email" id="example-email" name="email" class="form-control" value="{{$getDataById->email}}" require>
                                 </div>
                                 <div class="form-group mb-3">
-                                    <label for="dest">District<apan class="text-danger">*</apan></label>
-                                    <input type="text" id="dest" name="district" class="form-control" value="{{$getDataById->district}}" require>
-                                </div>
-                                <div class="form-group mb-3">
                                     <label for="example-textarea">Address<apan class="text-danger">*</apan></label>
                                     <textarea class="form-control" id="example-textarea" rows="5" name="address">{{$getDataById->address}}</textarea>
                                 </div>

@@ -24,16 +24,14 @@ class ComplainController extends Controller
                         ->get();
 
     $comById = DB::table('complains')
+
                         ->join('registrations', 'complains.reg_id', '=' , 'registrations.id')
                         ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
+                        // ->where('station_id',session()->get('stationId'))
                         ->where('station_id',session()->get('stationId'))
                         ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
                         ->get();
-
-
-    
-
-       return view ('pages.complain.manageComplain', compact('allComplain', 'comById'));
+                      return view ('pages.complain.manageComplain', compact('allComplain', 'comById'));
 
     }
 

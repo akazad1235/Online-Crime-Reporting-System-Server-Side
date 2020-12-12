@@ -44,9 +44,12 @@ class LoginController extends Controller
     {  
         $inputVal = $request->all();
 
+      //  return $inputVal;
+
         $email =  $inputVal['email'];
-       $getUser = User::where('email',$email)->get();
-        //return $getUser;
+        //return $email;
+        $getUser = User::where('email',$email)->get();
+       //return $getUser;
         $userCount = $getUser->count();
        // return $userCount;
        $getStationId = $getUser[0]['station'];
@@ -70,8 +73,6 @@ class LoginController extends Controller
                     session(['stationId'=>$getStationId]);
                     return redirect()->route('admin.dashboard');
                 }
-                
-                
             }
         }else{
             return redirect()->route('login')

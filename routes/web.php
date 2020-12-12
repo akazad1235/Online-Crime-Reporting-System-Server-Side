@@ -7,6 +7,7 @@ use App\Http\Controllers\CriminalController;
 use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -32,68 +33,85 @@ use GuzzleHttp\Middleware;
 // Route::post('/station', [PoliceStationController::class, 'store']);
 
 
-//station is creating the group
-Route::prefix('policeStation')->name('station.')->group(function () {
-
-    Route::get('/station', [PoliceStationController::class, 'index'])->name('index');
-    Route::get('/getform', [PoliceStationController::class, 'create'])->name('create');
-    Route::post('/station', [PoliceStationController::class, 'store'])->name('store');
-    Route::get('/getdata/{id}', [PoliceStationController::class, 'edit'])->name('edit');
-    Route::post('/dataUpdate/{id}', [PoliceStationController::class, 'update'])->name('update');
-    Route::get('/delete/{id}', [PoliceStationController::class, 'destroy'])->name('delete');
-});
-
-//station is creating the group
-Route::prefix('district')->name('district.')->group(function () {
-
-    Route::get('/showAll', [DistrictController::class, 'index'])->name('index');
-    Route::get('/district', [DistrictController::class, 'create'])->name('create');
-    Route::post('/district', [DistrictController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [DistrictController::class, 'edit'])->name('edit');
-    Route::post('/update/{id}', [DistrictController::class, 'update'])->name('update');
-    Route::get('/delete/{id}', [DistrictController::class, 'destroy'])->name('delete');
-    
-});
-
-//criminals is create the group
-Route::prefix('criminals')->name('criminals.')->group(function () {
-
-    Route::get('/index', [CriminalController::class, 'index'])->name('index');
-    Route::get('/create', [CriminalController::class, 'create'])->name('create');
-    Route::post('/store', [CriminalController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [CriminalController::class, 'edit'])->name('edit');
-    Route::post('/update/{id}', [CriminalController::class, 'update'])->name('update');
-    Route::get('/delete/{id}', [CriminalController::class, 'destroy'])->name('delete');
-    
-
-});
-
-//Coplain is create the group
-Route::prefix('complain')->name('complain.')->group(function () {
-
-    Route::get('/index', [ComplainController::class, 'index'])->name('index');
- 
-});
-
-//Users is create the group
-Route::prefix('users')->name('users.')->group(function () {
-
-    Route::get('/index', [userController::class, 'index'])->name('index');
-    Route::get('/create', [userController::class, 'create'])->name('create');
-    Route::post('/store', [userController::class, 'store'])->name('store');
- 
-});
 
 Auth::routes(['register' => false]);
 
 
 Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
-    Route::get('/', [HomeController::class, 'dashboard']);
 
-    Route::prefix('admin')->name('admin.')->group(function () {
+            
+        //station is creating the group
+        Route::prefix('policeStation')->name('station.')->group(function () {
+
+            Route::get('/station', [PoliceStationController::class, 'index'])->name('index');
+            Route::get('/getform', [PoliceStationController::class, 'create'])->name('create');
+            Route::post('/station', [PoliceStationController::class, 'store'])->name('store');
+            Route::get('/getdata/{id}', [PoliceStationController::class, 'edit'])->name('edit');
+            Route::post('/dataUpdate/{id}', [PoliceStationController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [PoliceStationController::class, 'destroy'])->name('delete');
+        });
+
+        //station is creating the group
+        Route::prefix('district')->name('district.')->group(function () {
+
+            Route::get('/showAll', [DistrictController::class, 'index'])->name('index');
+            Route::get('/district', [DistrictController::class, 'create'])->name('create');
+            Route::post('/district', [DistrictController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [DistrictController::class, 'edit'])->name('edit');
+            Route::post('/update/{id}', [DistrictController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [DistrictController::class, 'destroy'])->name('delete');
+            
+        });
+
+        //criminals is create the group
+        Route::prefix('criminals')->name('criminals.')->group(function () {
+
+            Route::get('/index', [CriminalController::class, 'index'])->name('index');
+            Route::get('/create', [CriminalController::class, 'create'])->name('create');
+            Route::post('/store', [CriminalController::class, 'store'])->name('store');
+            Route::get('/edit/{id}', [CriminalController::class, 'edit'])->name('edit');
+            Route::post('/update/{id}', [CriminalController::class, 'update'])->name('update');
+            Route::get('/delete/{id}', [CriminalController::class, 'destroy'])->name('delete');
+            
+
+        });
+
+        //Coplain is create the group
+        Route::prefix('complain')->name('complain.')->group(function () {
+
+            Route::get('/index', [ComplainController::class, 'index'])->name('index');
+        
+        });
+
+        //Users is create the group
+        Route::prefix('users')->name('users.')->group(function () {
+
+            Route::get('/index', [userController::class, 'index'])->name('index');
+            Route::get('/create', [userController::class, 'create'])->name('create');
+            Route::post('/store', [userController::class, 'store'])->name('store');
+        
+        });
+
+         //Users profiles is create the group
+         Route::prefix('profile')->name('profile.')->group(function () {
+
+            Route::get('/index', [ProfileController::class, 'index'])->name('index');
+            // Route::get('/create', [userController::class, 'create'])->name('create');
+            // Route::post('/store', [userController::class, 'store'])->name('store');
+        
+        });
+
+
+  
+        //use router
+        Route::get('/', [HomeController::class, 'dashboard']);
+        Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
         Route::get('/home', [HomeController::class, 'dashboard']);
+
+
+
      
     });
 

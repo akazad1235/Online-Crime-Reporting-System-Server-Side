@@ -50,7 +50,6 @@ class PoliceStationController extends Controller
         $validatedData = $request->validate([
             'policeStationName' => 'required|unique:police_stations',
             'email' => 'required|unique:police_stations',
-            'district' => 'required',
             'address' => 'required | max:250',
         ]);
 
@@ -126,32 +125,19 @@ class PoliceStationController extends Controller
         $validatedData = $request->validate([
             'policeStationName' => 'required',
             'email' => 'required',
-            'district' => 'required',
             'address' => 'required | max:250',
         ]);
 
         $data =[
             'policeStationName' =>  $request->input('policeStationName'),
             'email' =>  $request->input('email'),
-            'district' =>  $request->input('district'),
             'address' =>  $request->input('address')
         ];
-
-        
-        
-        
-
         if ($dataUpdate->update($data)) {
             return back()->with('added_recorded', 'Police Station Update Successfully');
         }else{
             return back()->with('error_recorded', 'Police Station Update Faild');
         }
-
-
-
-
-
-
     }
 
     /**
@@ -163,13 +149,17 @@ class PoliceStationController extends Controller
      function destroy($id)
     {
         $id = base64_decode($id);
+        //return $id;
         $getData =  policeStation::find($id);
-        $result = $getData->delete();
+
+        //return $getData;
+       $result = $getData->delete();
 
         if ($result == true) {
             return back()->with('added_recorded', 'Police Station Delete Successfully');
         }else{
             return back()->with('error_recorded', 'Police Station Delete Successfully');
         }
+        
     }
 }
