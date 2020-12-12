@@ -20,9 +20,9 @@ use GuzzleHttp\Middleware;
 |
 */
 
-// Route::get('/', function () {
-//     return view('dashboard');
-// });
+Route::get('/', function () {
+    return view('dashboard');
+});
 
 
 

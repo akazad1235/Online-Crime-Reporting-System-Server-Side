@@ -45,7 +45,7 @@
                             <td>{{ $value->station }}</td>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
-                            <td>{{ $value->user_role }}</td>
+                            <td>{{ $value->is_admin == 1? 'Admin' : 'User' }}</td>
                             <td><span class="badge  badge-{{($value->status == 1 ? 'success' : 'danger' ) }} text-capitalize">{{$value->status ==1 ? 'Active':'Inactive' }}</span></td>
                             <td><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
                         </tr>

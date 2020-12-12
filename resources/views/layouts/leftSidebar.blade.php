@@ -39,7 +39,7 @@
                     
                 </ul>
             </li>
-            @if(auth()->user()->is_admin == 1)
+            @if(auth()->user()->is_admin == 1 || auth()->user()->station == 2)
                 <li>
                     <a href="javascript: void(0);">
                         <i class="fe-pocket"></i>

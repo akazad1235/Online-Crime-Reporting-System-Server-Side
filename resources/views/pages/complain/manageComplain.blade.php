@@ -15,7 +15,7 @@
                                 toastr.error("{!!Session::get('error_recorded')!!}");
                             </script>
                         @endif
-
+                
                     <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>
                     <table id="demo-custom-toolbar"  data-toggle="table"
                             data-toolbar="#demo-delete-row"
@@ -39,6 +39,7 @@
                         </thead>
 
                         <tbody>
+                    @if(auth()->user()->is_admin == 1  )
                         @foreach($allComplain as $value)
 
                              <tr>
@@ -53,10 +54,27 @@
                         </tr>
                        
                         @endforeach
+                    @elseif(auth()->user()->is_admin == 0)
+                    @foreach($comById as $value)
+                            <tr>
+                            <td></td>
+                            <td>{{ $value->name }}</td>
+                            <td>{{ $value->policeStationName }}</td>
+                            <td>{{ $value->complain_name }}</td>
+                            <td>{{ $value->created_at }}</td>
+                            <td><span class="badge  badge-{{ randomStatusColor($value->status) }} text-capitalize">{{$value->status}}</span></td>
+
+                            <td> <a class="btn btn-warning btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Info</a> <a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
+                        </tr>
+              
+               @endforeach
+
+                    @endif
                        
                         
                         </tbody>
                     </table>
+                
                 </div> <!-- end card-box-->
             </div> <!-- end col-->
         </div>

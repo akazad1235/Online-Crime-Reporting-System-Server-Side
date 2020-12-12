@@ -55,8 +55,8 @@
                                             <label for="rules">User Roles<apan class="text-danger">*</apan></label>
                                             <select id="rules" class="form-control" required="" name="user_role">
                                                 <option value="">Choose..</option>
-                                                <option value="admin">Admin</option>
-                                                <option value="user">User</option>
+                                                <option value="1">Admin</option>
+                                                <option value="0">User</option>
                                                
                                             </select>
                                         </div>

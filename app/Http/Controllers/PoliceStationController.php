@@ -10,6 +10,7 @@ use Brian2694\Toastr\Facades\Toastr;
 
 
 
+
 class PoliceStationController extends Controller
 {
     /**
@@ -43,35 +44,40 @@ class PoliceStationController extends Controller
      function store(Request $request)
     {
 
+        $districtId =  $request->input('district');
         
-
+      // return $districtId;
         $validatedData = $request->validate([
             'policeStationName' => 'required|unique:police_stations',
             'email' => 'required|unique:police_stations',
             'district' => 'required',
             'address' => 'required | max:250',
         ]);
+
+        $checkDistrictId = District::where('id', $districtId)->count();
+       // return $checkDistrictId;
         
 
         $stationCode = (rand(10,1000));
         $policeStationName =  $request->input('policeStationName');
         $email =  $request->input('email');
-        $district =  $request->input('district');
         $address =  $request->input('address');
 
-            $dataInsert =  policeStation::insert([
-                'policeStationName'=>$policeStationName,
-                'email'=> $email,
-                'stationCode'=> $stationCode,
-                'district' => $district,
-                'address' => $address
-                  ]);
-            
-            if ($dataInsert) {
-                return back()->with('added_recorded', 'Police Station Added Successfully');
-            }else{
-                return back()->with('error_recorded', 'Police Station Added Faild');
-            }
+      if ($checkDistrictId === 1) {
+        $dataInsert =  policeStation::insert([
+            'district_id'=>$districtId,
+            'policeStationName'=>$policeStationName,
+            'email'=> $email,
+            'stationCode'=> $stationCode,
+            'address' => $address
+              ]);
+        
+        if ($dataInsert) {
+            return back()->with('added_recorded', 'Police Station Added Successfully');
+        }else{
+            return back()->with('error_recorded', 'Police Station Added Faild');
+        }
+      }
             
     }
 

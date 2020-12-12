@@ -23,7 +23,7 @@
                             </script>
                         @endif
                          @if(Session::has('error_recorded'))
-                            <sc></sc>ript>
+                            <script>
                                 toastr.error("{!!Session::get('error_recorded')!!}");
                             </script>
                         @endif
@@ -47,7 +47,7 @@
                                     <select class="selectpicker" data-live-search="true" name="district"  data-style="btn-light">
                                             <option>Select District</option>
                                             @foreach ($district as $value)
-                                            <option value="{{$value->district}}">{{$value->district}}</option>
+                                            <option value="{{$value->id}}">{{$value->district}}</option>
                                             @endforeach
                                     </select>
                                 </div>

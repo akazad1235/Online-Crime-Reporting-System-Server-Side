@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -42,17 +43,35 @@ class LoginController extends Controller
     public function login(Request $request)
     {  
         $inputVal = $request->all();
+
+        $email =  $inputVal['email'];
+       $getUser = User::where('email',$email)->get();
+        //return $getUser;
+        $userCount = $getUser->count();
+       // return $userCount;
+       $getStationId = $getUser[0]['station'];
+    //   for($i = 0; $i<$userCount; $i++){
+    //     return $getUser[$i]['station'];
+    //   }  
    
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
    
-        if(auth()->attempt(array('email' => $inputVal['email'], 'password' => $inputVal['password']))){
+        if(auth()->attempt(array('email' => $inputVal['email'], 'password' =>$inputVal['password']))){
             if (auth()->user()->is_admin == 1) {
+                //session()->put('stationId', $getStationId);
+                session(['stationId'=>$getStationId]);
                 return redirect()->route('admin.dashboard');
+                
             }else{
-                return redirect()->route('home');
+                if ($userCount == 1) {
+                    session(['stationId'=>$getStationId]);
+                    return redirect()->route('home');
+                }
+                
+                
             }
         }else{
             return redirect()->route('login')

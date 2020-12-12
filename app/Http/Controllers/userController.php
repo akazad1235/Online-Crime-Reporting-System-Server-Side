@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\policeStation;
+use Illuminate\Support\Facades\Hash;
 
 class userController extends Controller
 {
@@ -43,7 +44,7 @@ class userController extends Controller
         $email = $request->input('email');
         $station = $request->input('station');
         $userRole = $request->input('user_role');
-        $password = md5($request->input('password'));
+        $password = Hash::make($request->input('password'));
 
         $data = [
             'station'   =>$station,

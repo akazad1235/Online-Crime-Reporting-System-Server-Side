@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\policeStation;
 use DB;
 
 class ComplainController extends Controller
@@ -14,14 +15,25 @@ class ComplainController extends Controller
      */
     public function index()
     {
+       // return session()->get('stationId');
         
        $allComplain = DB::table('complains')
                         ->join('registrations', 'complains.reg_id', '=' , 'registrations.id')
-                        ->join('police_stations', 'complains.station_id', '=', 'police_stations.id',)
+                        ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
                         ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
                         ->get();
 
-       return view ('pages.complain.manageComplain', compact('allComplain'));
+    $comById = DB::table('complains')
+                        ->join('registrations', 'complains.reg_id', '=' , 'registrations.id')
+                        ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
+                        ->where('station_id',session()->get('stationId'))
+                        ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
+                        ->get();
+
+
+    
+
+       return view ('pages.complain.manageComplain', compact('allComplain', 'comById'));
 
     }
 
