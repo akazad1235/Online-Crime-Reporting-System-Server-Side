@@ -16,12 +16,13 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        // $id= session('stationId');
-        // $getUserById = DB::table('profiles')
-        // ->join('users', 'profiles.user_id', '=', 'users.id')
-        // ->select('profiles.*', 'users.name')
-        // ->where('station', $id)
-        // ->get();
+        $id= session('userId');
+        $profileData  = DB::table('profiles')
+        ->join('users', 'profiles.user_id', '=', 'users.id')
+        ->join('police_stations', 'profiles.station_id', '=', 'police_stations.id')
+        ->select('profiles.*', 'users.email', 'users.name' , 'police_stations.*')
+        ->where('user_id', $id)
+        ->get();
 
         //  return $getUserById;
         //session()->flush();
@@ -30,8 +31,8 @@ class ProfileController extends Controller
       //  return session()->all();
      // return  session()->get([0]['stationId']);
   
-        $profileData = Profile::where('user_id', session('userId'))->get();
-        return $profileData;
+       // $profileData = Profile::where('user_id', session('userId'))->get();
+       // return $getUserById;
         //return session('userId');
 
          return view('pages.profile.profile', compact('profileData'));
