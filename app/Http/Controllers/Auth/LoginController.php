@@ -53,6 +53,8 @@ class LoginController extends Controller
         $userCount = $getUser->count();
        // return $userCount;
        $getStationId = $getUser[0]['station'];
+       $userId = $getUser[0]['id'];
+     //  return $userId;
     //   for($i = 0; $i<$userCount; $i++){
     //     return $getUser[$i]['station'];
     //   }  
@@ -64,13 +66,20 @@ class LoginController extends Controller
    
         if(auth()->attempt(array('email' => $inputVal['email'], 'password' =>$inputVal['password']))){
             if (auth()->user()->is_admin == 1) {
-                //session()->put('stationId', $getStationId);
-                session(['stationId'=>$getStationId]);
+
+                   for($i = 0; $i<2; $i++){
+                        session(['stationId'=>$getStationId,]);
+                        session(['userId'=>$userId]);
+                    }  
+
                 return redirect()->route('admin.dashboard');
                 
             }else{
                 if ($userCount == 1) {
-                    session(['stationId'=>$getStationId]);
+                    for($i = 0; $i<2; $i++){
+                        session(['stationId'=>$getStationId,]);
+                        session(['userId'=>$userId]);
+                    }  
                     return redirect()->route('admin.dashboard');
                 }
             }

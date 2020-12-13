@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use DB;
+
 
 class ProfileController extends Controller
 {
@@ -14,7 +16,25 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('pages.profile.profile');
+        // $id= session('stationId');
+        // $getUserById = DB::table('profiles')
+        // ->join('users', 'profiles.user_id', '=', 'users.id')
+        // ->select('profiles.*', 'users.name')
+        // ->where('station', $id)
+        // ->get();
+
+        //  return $getUserById;
+        //session()->flush();
+       // return session('stationId');
+       // return session('userId');
+      //  return session()->all();
+     // return  session()->get([0]['stationId']);
+  
+        $profileData = Profile::where('user_id', session('userId'))->get();
+        return $profileData;
+        //return session('userId');
+
+         return view('pages.profile.profile', compact('profileData'));
     }
 
     /**
@@ -57,7 +77,7 @@ class ProfileController extends Controller
      */
     public function edit(Profile $profile)
     {
-        //
+        return view('pages.profile.updateProfile');
     }
 
     /**

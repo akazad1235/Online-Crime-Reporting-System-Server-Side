@@ -96,12 +96,10 @@ Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
          Route::prefix('profile')->name('profile.')->group(function () {
 
             Route::get('/index', [ProfileController::class, 'index'])->name('index');
-            // Route::get('/create', [userController::class, 'create'])->name('create');
-            // Route::post('/store', [userController::class, 'store'])->name('store');
-        
+            Route::get('/index', [ProfileController::class, 'index'])->name('index');
+            Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
+ 
         });
-
-
   
         //use router
         Route::get('/', [HomeController::class, 'dashboard']);
