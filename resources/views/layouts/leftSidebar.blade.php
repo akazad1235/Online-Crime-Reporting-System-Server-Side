@@ -95,6 +95,27 @@
                     </ul>
                 </li>
             @endif
+
+            <li class="menu-title mt-2">Blogs</li>
+
+            @if(auth()->user()->is_admin == 1)
+            <li>
+                <a href="javascript: void(0);">
+                    <i class="fe-pocket"></i>
+                    <span>Blog </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <ul class="nav-second-level" aria-expanded="false">
+                
+                    <li>
+                        <a href="{{route('users.create')}}">Add Users</a>
+                    </li>
+                    <li>
+                        <a href="{{route('users.index')}}">Mange Users</a>
+                    </li>
+                </ul>
+            </li>
+        @endif
           
 
             <li>

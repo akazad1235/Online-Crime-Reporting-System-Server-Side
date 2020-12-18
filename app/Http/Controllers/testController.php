@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\policeStation;
-use DB;
+use Illuminate\Support\Facades\DB;
 
-class ComplainController extends Controller
+
+class testController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,24 +15,7 @@ class ComplainController extends Controller
      */
     public function index()
     {
-       // return session()->get('stationId');
-        
-       $allComplain = DB::table('complains')
-                        ->join('registrations', 'complains.reg_id', '=' , 'registrations.id')
-                        ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
-                        ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
-                        ->get();
-
-    $comById = DB::table('complains')
-
-                        ->join('registrations', 'complains.reg_id', '=' , 'registrations.id')
-                        ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
-                        // ->where('station_id',session()->get('stationId'))
-                        ->where('station_id',session()->get('stationId'))
-                        ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
-                        ->get();
-                      return view ('pages.complain.manageComplain', compact('allComplain', 'comById'));
-
+       return DB::table('criminals')->orderBy('id', 'desc')->get();
     }
 
     /**
@@ -42,7 +25,7 @@ class ComplainController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -99,5 +82,10 @@ class ComplainController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function complain(){
+       $allComplain =  DB::table('complains')->get();
+       return $allComplain;
     }
 }

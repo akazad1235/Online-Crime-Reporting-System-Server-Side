@@ -8,6 +8,7 @@ use App\Http\Controllers\ComplainController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\testController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -107,12 +108,16 @@ Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
 
         Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
         Route::get('/home', [HomeController::class, 'dashboard']);
-
-
-
-     
     });
 
-  
 });
+
+
+//for api
+Route::get('/testCriminal', [testController::class, 'index']);
+Route::get('/addComplian', [testController::class, 'create']);
+Route::get('/allComplians', [testController::class, 'complain']);
+
+
+
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Criminal;
 use Illuminate\Http\Request;
+use Image;
 
 
 class CriminalController extends Controller

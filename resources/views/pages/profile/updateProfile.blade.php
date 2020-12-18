@@ -2,8 +2,8 @@
 @section('content')
 <div class="row">
             <div class="col-sm-12">
-              updae page
-            </div> <!-- end col-->
+              
+            </div> 
         </div>
 
 @endsection
