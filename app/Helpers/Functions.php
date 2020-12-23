@@ -5,8 +5,9 @@ function randomStatusColor($status){
     $color = [
         'success' => 'success',
         'pending' => 'danger',
-        'return'  => 'info',
+        'done'  => 'info',
         'shipped' => 'warning',
+        
        
     ];
 

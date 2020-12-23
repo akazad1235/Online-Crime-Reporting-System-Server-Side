@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\testController;
+use App\Http\Controllers\criminalApiController;
+use App\Http\Controllers\UserRegistrationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +21,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('complainStor', testController::class);
+Route::resource('allComplians', testController::class); 
+
+Route::resource('/criminals', criminalApiController::class);
+
+
+Route::resource('/register', UserRegistrationController::class);
+
+//user Registration
+

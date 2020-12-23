@@ -9,6 +9,8 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\testController;
+use App\Http\Controllers\UserRegistrationController;
+
 use GuzzleHttp\Middleware;
 
 /*
@@ -114,9 +116,17 @@ Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
 
 
 //for api
-Route::get('/testCriminal', [testController::class, 'index']);
-Route::get('/addComplian', [testController::class, 'create']);
-Route::get('/allComplians', [testController::class, 'complain']);
+Route::get('/criminals', [testController::class, 'criminals']);
+Route::get('/addComplian', [testController::class, 'createComplain']);
+Route::get('/storeComplain', [testController::class, 'storeComplain']);
+
+//create a new complain
+Route::post('/storeComplain', [testController::class, 'storeComplain']);
+//Route::post('/register ', [UserRegistrationController::class, 'store']);
+
+
+
+
 
 
 

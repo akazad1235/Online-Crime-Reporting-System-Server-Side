@@ -31,7 +31,7 @@ class ComplainController extends Controller
                         ->where('station_id',session()->get('stationId'))
                         ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
                         ->get();
-                      return view ('pages.complain.manageComplain', compact('allComplain', 'comById'));
+                         return view ('pages.complain.manageComplain', compact('allComplain', 'comById'));
 
     }
 
@@ -100,4 +100,7 @@ class ComplainController extends Controller
     {
         //
     }
+
+
+
 }
