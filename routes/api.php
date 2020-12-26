@@ -6,6 +6,7 @@ use App\Http\Controllers\testController;
 use App\Http\Controllers\criminalApiController;
 use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\Api\userController;
+use App\Http\Controllers\Api\userComplainController;
 
 
 /*
@@ -32,6 +33,9 @@ Route::resource('/criminals', criminalApiController::class);
 Route::resource('/register', UserRegistrationController::class);
 
 Route::resource('/users', userController::class);
+
+//user complain
+Route::resource('/complain', userComplainController::class);
 
 
 //user Registration

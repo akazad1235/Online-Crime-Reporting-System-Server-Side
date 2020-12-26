@@ -17,16 +17,16 @@ class CreateComplainsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('reg_id');
             $table->unsignedBigInteger('station_id');
-            $table->string('complain_name');
+            $table->string('complain_name')->nullable();
             $table->string('complain_type');
             $table->text('desc');
-            $table->string('address');
+            $table->text('place');
             $table->string('image')->nullable();
             $table->string('video')->nullable();
             $table->string('file')->nullable();
-            $table->string('status')->default('pending');
+            $table->integer('comp_status')->default(0);
             $table->timestamps();
-            $table->foreign('reg_id')->references('id')->on('registrations')->onDelete('cascade');
+            $table->foreign('reg_id')->references('id')->on('user_registrations')->onDelete('cascade');
             $table->foreign('station_id')->references('id')->on('police_stations')->onDelete('cascade');
         });
     }

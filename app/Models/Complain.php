@@ -14,9 +14,10 @@ class Complain extends Model
         'complain_name',
         'complain_type',
         'desc',
-        'address',
+        'place',
         'image',
         'video',
         'file',
+        'comp_status',
     ];
 }
