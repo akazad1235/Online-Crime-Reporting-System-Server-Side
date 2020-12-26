@@ -14,7 +14,8 @@ class criminalApiController extends Controller
      */
     public function index()
     {
-        return DB::table('criminals')->orderBy('id', 'desc')->get();
+        $result = DB::table('criminals')->orderBy('id', 'desc')->get();
+        return response()->json(['result'=>$result, 'status'=>'200']);
     }
 
     /**

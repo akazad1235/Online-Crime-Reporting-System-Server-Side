@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\criminalApiController;
 use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\Api\userController;
 
 
 /*
@@ -27,8 +28,11 @@ Route::resource('allComplians', testController::class);
 
 Route::resource('/criminals', criminalApiController::class);
 
-
+//User Register
 Route::resource('/register', UserRegistrationController::class);
+
+Route::resource('/users', userController::class);
+
 
 //user Registration
 

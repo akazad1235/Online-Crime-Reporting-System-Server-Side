@@ -5,7 +5,7 @@ use App\Http\Controllers\PoliceStationController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\CriminalController;
 use App\Http\Controllers\ComplainController;
-use App\Http\Controllers\userController;
+use App\Http\Controllers\Api\userController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\testController;
@@ -122,6 +122,9 @@ Route::get('/storeComplain', [testController::class, 'storeComplain']);
 
 //create a new complain
 Route::post('/storeComplain', [testController::class, 'storeComplain']);
+
+Route::get('/verified/{id}/token/{verification_code}', [userController::class, 'verifyAcc'])->name('verify-code');
+
 //Route::post('/register ', [UserRegistrationController::class, 'store']);
 
 

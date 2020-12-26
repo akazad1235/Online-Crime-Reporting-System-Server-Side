@@ -36,23 +36,35 @@ class UserRegistrationController extends Controller
      */
     public function store(Request $request)
     {
+        //check user email exits or not
+        $exitEmail =  userRegistration::where('email', $request->email)->count();
+        
         
         $name = $request->name;
         $email = $request->email;
         $gender = $request->gender;
         $birthDay = $request->birth_day;
-        $password = Hash::make($request->password);
+        $password = md5($request->password);
      //  return [$birthDay,$gender];
 
-      $userRegister= userRegistration::create([
-           'name' => $name,
-           'email' => $email,
-           'gender' => $gender,
-           'birth_day' => $birthDay,
-           'password' => $password
-       ]);
+     if($exitEmail == true){
+        return response()->json(['warning'=>'User Already Exits, try another email', 'status'=>'302']);
+    }elseif($exitEmail == false){
+        $userRegister= userRegistration::create([
+            'name' => $name,
+            'email' => $email,
+            'gender' => $gender,
+            'birth_day' => $birthDay,
+            'password' => $password
+        ]);
+    return response()->json(['success'=>'User Registration Success', 'status'=>'200','data'=>$userRegister]);
+    }else{
+        return response()->json(['danger'=>'User Registration Faild', 'status'=>'404']);
+    }
 
-       return response()->json(['success'=>'data insert success', 'status'=>'200','data'=>$userRegister]);
+      
+
+      
     }
 
     /**
