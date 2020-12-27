@@ -54,12 +54,6 @@ class userComplainController extends Controller
         $desc = $request->input('desc');
         $place = $request->input('place');
 
-        // $regId = 2;
-        // $stdId = 6;
-        // $crimeType ='test';
-        // $desc = $request->input('desc');
-        // $place ='testss';
-
         $image = $request->file('image');
 
         if($image){
@@ -83,10 +77,6 @@ class userComplainController extends Controller
             }
         }
         
-        
-
-       
-
         $data = [
             'reg_id' => $regId,
             'station_id' => $stdId,
@@ -128,12 +118,25 @@ class userComplainController extends Controller
      */
     public function show($id)
     {
-        $complianDataById =  DB::table('complains')
-            ->join('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')
-            ->where('reg_id',$id)
-            ->get();
+        $complianDataById =  DB::table('complains')->where('reg_id', $id)->get();
+            // ->join('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')
+            // ->where('reg_id',$id)
+            // ->get();
 
-            return response()->json(['success'=>'Complain Data showed' , 'status'=>'200', 'result'=>$complianDataById ]);
+         $details = Complain::find($id);   
+
+      
+        
+
+            if($details){
+                $file = $details->file;
+                $convertFile = json_decode($file);
+                return response()->json(['success'=>'Complain Data showed' , 'status'=>'200', 'result'=>$details, 'convertFile'=>$convertFile]);
+            }else{
+                return response()->json(['success'=>'Complain Data showed' , 'status'=>'200', 'result'=>$complianDataById ]);
+            }
+
+            
     }
 
     /**
