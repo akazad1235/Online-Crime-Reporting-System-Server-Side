@@ -18,18 +18,18 @@ class ComplainController extends Controller
        // return session()->get('stationId');
         
        $allComplain = DB::table('complains')
-                        ->join('registrations', 'complains.reg_id', '=' , 'registrations.id')
+                        ->join('user_registrations', 'complains.reg_id', '=' , 'user_registrations.id')
                         ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
-                        ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
+                        ->select('complains.*', 'user_registrations.name', 'police_stations.policeStationName')
                         ->get();
 
     $comById = DB::table('complains')
 
-                        ->join('registrations', 'complains.reg_id', '=' , 'registrations.id')
+                        ->join('user_registrations', 'complains.reg_id', '=' , 'user_registrations.id')
                         ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
                         // ->where('station_id',session()->get('stationId'))
                         ->where('station_id',session()->get('stationId'))
-                        ->select('complains.*', 'registrations.name', 'police_stations.policeStationName')
+                        ->select('complains.*', 'user_registrations.name', 'police_stations.policeStationName')
                         ->get();
                          return view ('pages.complain.manageComplain', compact('allComplain', 'comById'));
 
