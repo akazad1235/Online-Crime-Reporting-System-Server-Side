@@ -1,9 +1,9 @@
 @extends('layouts.master')
 @section('content')
 <div class="row">
-            <div class="col-sm-12">
-                <div class="card-box">
-                    <h4 class="header-title font-weight-bold">Complain Details</h4>
+            <div class="col-sm-12" >
+                <div class="card-box" id="laodContent">
+                    <h3 class="header-title font-weight-bold mb-2 text-primary">Complain Details</h3>
                     
                         @if(Session::has('added_recorded'))
                             <script>
@@ -15,7 +15,7 @@
                                 toastr.error("{!!Session::get('error_recorded')!!}");
                             </script>
                         @endif
-                        @foreach ($dataArr as $value)
+                        @foreach ($GetComplainData as $value)
                             <div class="col-md-12">
                                 <div class="row my-1  border-bottom">
                                     <div class="col-md-3 font-weight-bold  align-self-center text-dark">Name</div>
@@ -23,7 +23,7 @@
                                 </div>
                                 <div class="row my-1  border-bottom">
                                     <div class="col-md-3 font-weight-bold  align-self-center text-dark">Complain Status</div>
-                                    <div class="col-md-8 align-self-center"><span class="badge badge-{{randomStatusColor($value->comp_status)}}">{{statusName($value->comp_status)}}</span> <button class="btn btn-info btn-sm">...</button></div>
+                                    <div class="col-md-8 align-self-center"><span class="badge badge-{{randomStatusColor($value->comp_status)}}">{{statusName($value->comp_status)}}</span> <button class="btn btn-info btn-sm" id={{$value->id}} onclick="statusUpdate(this.id)"  data-toggle="modal" data-target="#statusModal">...</button></div>
                                 </div>
                                 <div class="row my-1 border-bottom">
                                     <div class="col-md-3 font-weight-bold  align-self-center text-dark">Email</div>
@@ -53,7 +53,7 @@
                                     <div class="col-md-3 font-weight-bold  align-self-center text-dark">Email</div>
                                     <div class="col-md-8">{{$value->address }}</div>
                                 </div>
-                                <div class="row my-1">
+                                <div class="row my-1 border-bottom">
                                     <div class="col-md-3 font-weight-bold align-self-center text-dark">Description</div>
                                     <div class="col-md-8">{{$value->desc}}</div>
                                 </div>
@@ -118,59 +118,100 @@
                 
                     </div> <!-- end card-box-->
             </div> <!-- end col-->
-
-             <!-- sample modal content -->
-
-             <div id="full-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="full-width-modalLabel" aria-hidden="true" style="display: none;">
-                <div class="modal-dialog modal-full">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" id="full-width-modalLabel">Modal Heading</h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        </div>
-                        <div class="modal-body">
-                            <h4>Text in a modal</h4>
-                            <p id="id"></p>
-                            <p id="desc"></p>
-                            <img src="" alt="">
-                               
+            {{-- status modal --}}
+           <!-- Button trigger modal -->
+  
+                        <!-- Modal -->
+                        <div class="modal fade" id="statusModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title text-primary " id="exampleModalLabel">Complain Status</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <select id='currentStatus' class="form-control">
+                                    <option value="0">Panding</option>
+                                    <option value="1" >Processing</option>
+                                    <option value="2">Done</option>
+                                </select>
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" id="buttonId" onclick="updateId(this.id)" class="btn btn-primary">Update Status</button>
+                                </div>
                             </div>
-                            
-                            
-                            <hr>
-                            <h4>Overflowing text to show scroll behavior</h4>
-                            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary waves-effect waves-light">Save changes</button>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-          
             <script>
-                function show(id){
-                   // console.log(id);
-                   axios.get('/details', {
+                function statusUpdate(id){
+                    //console.log(id);
+                   axios.get('/updateStatus', {
                             params: {
                             id: id
                             }
                         })
                     .then(function (res) {
-                        let result = res.data                        
-                        let  id= document.getElementById('id')
-                        id.innerHTML = result.id
-                        let  desc= document.getElementById('desc')
-                        desc.innerHTML = result.image
-                        let img = document.getElementById('image')
-                            let newImg = document.createElement('img')
-                            newImg.setAttribute('src', result.image)
-                     // res.data.id
+                         let result = res.data;       
+                         console.log(res.data.comp_status);   
+                        var updateId =  document.getElementsByTagName("option") 
+                        console.log(updateId);
+                        var para = document.getElementById('p')
+                        console.log(para);
+                        for (let index = 0; index < updateId.length; index++) {
+                            const element = updateId[index];
+                           // console.log(element.value);
+                            if(res.data.comp_status == element.value){
+                               let newSelectValue = (updateId[element.value]); 
+                               newSelectValue.setAttribute('selected', 'selected')
+                                // console.log(newSelectValue);
+                                // console.log('new value');
+                               var id =  document.getElementById('buttonId');
+                               id.setAttribute('id', res.data.id);
+                               console.log(id);
+                               
+                            }
+                        }          
+                    //     let  id= document.getElementById('id')
+                    //     id.innerHTML = result.id
+                    //     let  desc= document.getElementById('desc')
+                    //     desc.innerHTML = result.image
+                    //     let img = document.getElementById('image')
+                    //         let newImg = document.createElement('img')
+                    //         newImg.setAttribute('src', result.image)
+                    //  // res.data.id
                     })
                     .catch(function (error) {
                         console.log(error);
                     })
+
+
+
+
+                }
+
+                function updateId(id){
+                   // console.log(id);
+                     let selectValue = document.getElementById('currentStatus').value
+                    // console.log(selectValue);
+                    axios.get('/updateId', {
+                            params: {
+                            id: id,
+                            comp_status:selectValue
+                            }
+                        })
+                        .then(function(res){
+                            console.log(res.data);
+                            // $('#laodContent').load(location.href + '#laodContent');
+                            location.reload()
+                            $('#statusModal').modal('toggle');
+                        } )
+                        .catch(function (error) {
+                        console.log(error);
+                    })
+
                 }
             </script>
         </div>

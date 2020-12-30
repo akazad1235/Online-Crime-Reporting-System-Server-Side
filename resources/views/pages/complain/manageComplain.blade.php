@@ -49,7 +49,7 @@
                             <td>{{ date('d-M-Y h:i:a', strtotime($value->created_at))  }}</td>
                             <td><span class="badge  badge-{{ randomStatusColor($value->comp_status)}} text-capitalize">{{statusName($value->comp_status)}}</span></td>
 
-                            <td> <a class="btn btn-danger btn-sm" href="{{ route('complain.details', base64_encode($value->id))}}">Info</a> <a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
+                            <td> <a class="btn btn-warning btn-sm" href="{{ route('complain.details', base64_encode($value->id))}}">Info</a> <a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
                         </tr> 
                         @endforeach
                         

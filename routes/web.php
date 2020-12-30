@@ -131,6 +131,8 @@ Route::get('/verified/{id}/token/{verification_code}', [userController::class, '
 
 
 Route::get('/details', [ComplainController::class, 'details']);
+Route::get('/updateStatus', [ComplainController::class, 'updateStatus']);
+Route::get('/updateId', [ComplainController::class, 'updateId']);
 
 
 

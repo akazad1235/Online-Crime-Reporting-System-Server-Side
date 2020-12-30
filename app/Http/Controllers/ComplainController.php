@@ -66,33 +66,33 @@ class ComplainController extends Controller
     public function show($id)
     {
 
-        $id = base64_decode($id);
+                            $id = base64_decode($id);
+                        //return $id;
+                      //  $data = Complain::find($id);
+                            //return $data;
+                        
+                        // return $id;
+                            // $GetComplainData = DB::table('complains')
+                            // ->join('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')
+                            // ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
+                            // ->select('complains.*', 'user_registrations.*','police_stations.*' )
+                            // ->where('complains.id', $id)
+                            // ->get();
 
-      // $data = Complain::find($id);
- 
-       
-       // return $id;
-    //  return   DB::table('complains')
-    //     ->join('user_registrations', 'complain.reg_id', '=', 'user_registrations.id')
-    //     ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
-    //     ->select('complains.*')
-    //     ->where('complains.id', $id)
-    //     ->get();
-      //  $data = Complain::find($id);
-     //   return view('pages.complain.detailsComplain', compact('data'));
+                            $GetComplainData =  DB::table('complains')
+                            ->leftJoin('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')
+                            ->leftJoin('police_stations', 'complains.station_id', '=', 'police_stations.id')
+                            ->select('complains.*', 'user_registrations.name','user_registrations.email', 'user_registrations.phone', 'user_registrations.nid', 'user_registrations.gender','user_registrations.birth_day','user_registrations.image', 'user_registrations.address','police_stations.policeStationName')
+                            ->where('complains.id', $id)
+                            ->get();
 
-                        $dataArr = DB::table('complains')
-                        ->join('user_registrations', 'complains.reg_id', '=' , 'user_registrations.id')
-                        ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
-                        ->select('complains.*', 'user_registrations.name', 'police_stations.policeStationName', 'user_registrations.*')
-                        ->where('complains.id', $id)
-                        ->get($id);
 
-                     foreach($dataArr as $value){
-                         $file = json_decode($value->file);
-                     }
-                     
-                     return view('pages.complain.detailsComplain', compact('dataArr', 'file'));
+                          //  $data = Complain::find($id);
+                            //return $GetComplainData;
+                                            foreach($GetComplainData as $value){
+                                                $file = json_decode($value->file);
+                                            }
+                              return view('pages.complain.detailsComplain', compact('GetComplainData', 'file'));
                         
                         
                
@@ -137,7 +137,31 @@ class ComplainController extends Controller
         $id =  $request->id;
         return Complain::find($id);
     }
+     public function updateStatus(Request $request){
+        $id =  $request->id;
+        return Complain::find($id);
+    }
+    public function updateId(Request $request){
+        $id =  $request->id;
+        $getData =  Complain::where('id', $id)->find($id);
+        
 
+        // if($getData->save($request->comp_status)){
+        //    return 'success';
+        // }else{
+        //     return 'faild';
+        // }
+        if($getData){
+            $getData->comp_status = $request->comp_status;
+            $getData->save();
+            return 'success';
+        }else{
+            return 'faild';
+        }
+        
+
+       // return $getData;
+    }
 
 
 }
