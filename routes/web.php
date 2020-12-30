@@ -83,7 +83,8 @@ Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
         Route::prefix('complain')->name('complain.')->group(function () {
 
             Route::get('/index', [ComplainController::class, 'index'])->name('index');
-        
+            Route::get('/details/{id}', [ComplainController::class, 'show'])->name('details');
+           // Route::get('/show', [ComplainController::class, 'show']); 
         });
 
         //Users is create the group
@@ -126,6 +127,10 @@ Route::post('/storeComplain', [testController::class, 'storeComplain']);
 Route::get('/verified/{id}/token/{verification_code}', [userController::class, 'verifyAcc'])->name('verify-code');
 
 //Route::post('/register ', [UserRegistrationController::class, 'store']);
+
+
+
+Route::get('/details', [ComplainController::class, 'details']);
 
 
 

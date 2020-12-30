@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Complain;
 use Illuminate\Http\Request;
 use App\Models\policeStation;
 use DB;
@@ -64,7 +65,38 @@ class ComplainController extends Controller
      */
     public function show($id)
     {
-        //
+
+        $id = base64_decode($id);
+
+      // $data = Complain::find($id);
+ 
+       
+       // return $id;
+    //  return   DB::table('complains')
+    //     ->join('user_registrations', 'complain.reg_id', '=', 'user_registrations.id')
+    //     ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
+    //     ->select('complains.*')
+    //     ->where('complains.id', $id)
+    //     ->get();
+      //  $data = Complain::find($id);
+     //   return view('pages.complain.detailsComplain', compact('data'));
+
+                        $dataArr = DB::table('complains')
+                        ->join('user_registrations', 'complains.reg_id', '=' , 'user_registrations.id')
+                        ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')
+                        ->select('complains.*', 'user_registrations.name', 'police_stations.policeStationName', 'user_registrations.*')
+                        ->where('complains.id', $id)
+                        ->get($id);
+
+                     foreach($dataArr as $value){
+                         $file = json_decode($value->file);
+                     }
+                     
+                     return view('pages.complain.detailsComplain', compact('dataArr', 'file'));
+                        
+                        
+               
+
     }
 
     /**
@@ -99,6 +131,11 @@ class ComplainController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function details(Request $request){
+        $id =  $request->id;
+        return Complain::find($id);
     }
 
 

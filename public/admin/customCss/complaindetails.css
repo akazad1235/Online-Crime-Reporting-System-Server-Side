@@ -1,0 +1,10 @@
+.document-image{
+    width: 200px;
+    height: 150px;
+    margin: 10px;
+    border-radius: 6px;
+}
+.docs{
+    font-size: 50px;
+    margin: 5px;
+}

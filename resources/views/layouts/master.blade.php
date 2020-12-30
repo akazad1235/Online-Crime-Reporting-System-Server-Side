@@ -32,6 +32,9 @@
         <link href="{{asset('admin/css/app.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('admin/css/toastr.css')}}" rel="stylesheet" type="text/css" />
 
+         <!-- App css -->
+
+        <link href="{{asset('admin/customCss/complaindetails.css')}}" rel="stylesheet" type="text/css" />
 
 
 
@@ -119,19 +122,17 @@
 
         <!-- App js-->
         <script src="{{asset('admin/js/app.min.js')}}"></script>
+        
+        <!-- Axios-->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
         <!-- moment js for date -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
         
-
-
-        
             <script>
-            if () {
-                
-            }
-                toastr.success("{!!Session::get('added_recorded')!!}");
+               // toastr.success("{!!Session::get('added_recorded')!!}");
             </script>
+           
       
     </body>
 
