@@ -7,6 +7,7 @@ use App\Http\Controllers\criminalApiController;
 use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\Api\userController;
 use App\Http\Controllers\Api\userComplainController;
+use App\Http\Controllers\Api\userUpdateController;
 
 
 /*
@@ -36,6 +37,7 @@ Route::resource('/users', userController::class);
 
 //user complain
 Route::resource('/complain', userComplainController::class);
+Route::resource('/updateProfile', userUpdateController::class);
 
 
 //user Registration

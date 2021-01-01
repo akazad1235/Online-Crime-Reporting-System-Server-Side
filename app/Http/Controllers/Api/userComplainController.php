@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Complain;
+use App\Models\Criminal;
+use App\Models\userRegistration;
 use Image;
 use Illuminate\Support\Facades\DB;
 
@@ -56,7 +58,12 @@ class userComplainController extends Controller
 
         $image = $request->file('image');
 
-        if($image){
+        $CheckUser = userRegistration::find($regId);
+
+       // return response()->json(['success' => 'complain added success', 'status'=>'200', 'result'=>$CheckUser]);
+
+        if ($CheckUser->acc_active && $CheckUser->nid) {
+          if($image){
             $fileName = rand(0, 999999999) . '_' . date('Ymdhis').'_' . rand(100, 999999999) . '.' . $image->getClientOriginalExtension();
         // return $fileName;
           Image::make($image)->resize(400, 400)->save(public_path('admin/images/complain/').$fileName);
@@ -88,7 +95,7 @@ class userComplainController extends Controller
              'file' =>  json_encode($files),
         
         ];
-     //   return $data;
+       // return $data;
        
       //  }
         // else{
@@ -103,10 +110,15 @@ class userComplainController extends Controller
        
        
         if (Complain::create($data) == true) {
-            return response()->json(['success' => 'complain added success', 'status'=>'200']);
+            return response()->json(['success' => 'Complain added success', 'status'=>'200', 'result'=>$data]);
         }else{
-            return response()->json(['error' => 'complain error ', 'status'=>'500']);
+            return response()->json(['error' => 'Complain Added Faild ', 'status'=>'500']);
         }
+        }else{
+            return response()->json(['error' => 'Your Account or NID not Active', 'status'=>'500']);
+        }
+
+
 
     }
 
@@ -133,7 +145,7 @@ class userComplainController extends Controller
                 $convertFile = json_decode($file);
                 return response()->json(['success'=>'Complain Data showed' , 'status'=>'200', 'result'=>$details, 'convertFile'=>$convertFile]);
             }else{
-                return response()->json(['success'=>'Complain Data showed' , 'status'=>'200', 'result'=>$complianDataById ]);
+                return response()->json(['success'=>'Complain Data showed' , 'status'=>'200']);
             }
 
             

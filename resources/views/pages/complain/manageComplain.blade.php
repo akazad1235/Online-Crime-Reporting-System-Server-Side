@@ -61,7 +61,7 @@
                             <td>{{ $value->policeStationName }}</td>
                             <td>{{ $value->complain_name }}</td>
                             <td>{{ $value->created_at }}</td>
-                            <td><span class="badge  badge-{{ randomStatusColor($value->status) }} text-capitalize">{{$value->status}}</span></td>
+                            <td><span class="badge  badge-{{ randomStatusColor($value->comp_status) }} text-capitalize">{{$value->comp_status}}</span></td>
 
                             <td> <a class="btn btn-danger btn-sm" href="{{ route('complain.details', base64_encode($value->id))}}">Info</a><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
                         </tr>

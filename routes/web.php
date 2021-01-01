@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\userController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\testController;
+use App\Http\Controllers\NationalIDController;
 use App\Http\Controllers\UserRegistrationController;
 
 use GuzzleHttp\Middleware;
@@ -102,6 +103,13 @@ Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
             Route::get('/index', [ProfileController::class, 'index'])->name('index');
             Route::get('/index', [ProfileController::class, 'index'])->name('index');
             Route::get('/edit', [ProfileController::class, 'edit'])->name('edit');
+ 
+        });
+          //National DI create the group
+          Route::prefix('nid')->name('nid.')->group(function () {
+
+            Route::get('/index', [NationalIDController::class, 'index'])->name('index');
+            Route::post('/store', [NationalIDController::class, 'store'])->name('store');
  
         });
   

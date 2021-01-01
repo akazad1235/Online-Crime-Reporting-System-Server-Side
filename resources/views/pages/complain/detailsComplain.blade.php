@@ -186,10 +186,6 @@
                     .catch(function (error) {
                         console.log(error);
                     })
-
-
-
-
                 }
 
                 function updateId(id){
@@ -211,7 +207,6 @@
                         .catch(function (error) {
                         console.log(error);
                     })
-
                 }
             </script>
         </div>

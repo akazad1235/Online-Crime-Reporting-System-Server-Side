@@ -142,7 +142,7 @@ class ComplainController extends Controller
         return Complain::find($id);
     }
     public function updateId(Request $request){
-        $id =  $request->id;
+        $id =  $request->all();
         $getData =  Complain::where('id', $id)->find($id);
         
 

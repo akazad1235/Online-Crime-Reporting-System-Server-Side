@@ -25,6 +25,7 @@ class CreateComplainsTable extends Migration
             $table->string('video')->nullable();
             $table->string('file')->nullable();
             $table->integer('comp_status')->default(0);
+            $table->string('comp_code')->unique();
             $table->timestamps();
             $table->foreign('reg_id')->references('id')->on('user_registrations')->onDelete('cascade');
             $table->foreign('station_id')->references('id')->on('police_stations')->onDelete('cascade');
