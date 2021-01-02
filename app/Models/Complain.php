@@ -19,6 +19,7 @@ class Complain extends Model
         'video',
         'file',
         'comp_status',
+        'comp_code',
         'created_at',
     ];
 }

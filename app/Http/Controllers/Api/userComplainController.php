@@ -58,7 +58,7 @@ class userComplainController extends Controller
      */
     public function store(Request $request)
     {
-       // return $request;
+       // return $request->all();
         // return response()->json(['success' => 'complain added success', 'status'=>'200', 'data'=>  $request]);
         
         $regId = $request->input('reg_id');
@@ -66,22 +66,18 @@ class userComplainController extends Controller
         $crimeType = $request->input('crime_type');
         $desc = $request->input('desc');
         $place = $request->input('place');
+        $comp_code =  mt_rand(1, 99999999);
 
-        $image = $request->file('image');
+      //  $image = $request->file('image');
 
-        $CheckUser = userRegistration::find($regId);
-
+         $CheckUser = userRegistration::find($regId);
+        
        // return response()->json(['success' => 'complain added success', 'status'=>'200', 'result'=>$CheckUser]);
-
+        //return $CheckUser->nid;
         if ($CheckUser->acc_active && $CheckUser->nid) {
-          if($image){
-            $fileName = rand(0, 999999999) . '_' . date('Ymdhis').'_' . rand(100, 999999999) . '.' . $image->getClientOriginalExtension();
-        // return $fileName;
-          Image::make($image)->resize(400, 400)->save(public_path('admin/images/complain/').$fileName);
-       
             $files = [];
             if($request->hasFile('file')){
-    
+                
                 $sl = 0;
                 foreach($request->file('file') as $value)
                 {
@@ -93,7 +89,7 @@ class userComplainController extends Controller
                     $sl++; 
                 }
             }
-        }
+        
         
         $data = [
             'reg_id' => $regId,
@@ -102,7 +98,8 @@ class userComplainController extends Controller
             'complain_name' => 'test',
             'desc' => $desc,
             'place' => $place,
-            'image' =>  $fileName,
+            'comp_code' => $comp_code,
+         //   'image' =>  $fileName,
              'file' =>  json_encode($files),
         
         ];
@@ -123,7 +120,7 @@ class userComplainController extends Controller
         if (Complain::create($data) == true) {
             return response()->json(['success' => 'Complain added success', 'status'=>'200', 'result'=>$data]);
         }else{
-            return response()->json(['error' => 'Complain Added Faild ', 'status'=>'500']);
+            return response()->json(['error' => 'Complain Added Faild', 'status'=>'500']);
         }
         }else{
             return response()->json(['error' => 'Your Account or NID not Active', 'status'=>'500']);
@@ -141,22 +138,26 @@ class userComplainController extends Controller
      */
     public function show($id)
     {
-        $complianDataById =  DB::table('complains')->where('reg_id', $id)->get();
-            // ->join('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')
-            // ->where('reg_id',$id)
-            // ->get();
+        $complianDataById =  DB::table('complains')
+            ->leftJoin('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')
+            ->select('complains.*', 'user_registrations.name', 'user_registrations.email')
+            ->where('reg_id',$id)
+            ->get();
+            //return $complianDataById;
 
          $details = Complain::find($id);   
 
-      
-        
-
+    //  return $details;
+        if ($complianDataById) {
+            # code...
+        }
             if($details){
                 $file = $details->file;
                 $convertFile = json_decode($file);
                 return response()->json(['success'=>'Complain Data showed' , 'status'=>'200', 'result'=>$details, 'convertFile'=>$convertFile]);
             }else{
-                return response()->json(['success'=>'Complain Data showed' , 'status'=>'200']);
+
+                return response()->json(['success'=>'Complain Data showed' , 'status'=>'200', 'result'=>$complianDataById]);
             }
 
             
