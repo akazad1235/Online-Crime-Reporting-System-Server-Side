@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\userRegistration;
+use App\Models\NationalID;
 
 class userUpdateController extends Controller
 {
@@ -74,10 +75,9 @@ class userUpdateController extends Controller
     public function update(Request $request, $id)
     {
      //   return $request->all();
-
-        $getUserData = userRegistration::where('id', $id)->find($id);
-
-
+    $existsNid =  NationalID::where('NID_No', $request->nid)->count();
+        if($existsNid == true){
+            $getUserData = userRegistration::where('id', $id)->find($id);
         // $image = $request->file('image');
         // return $image;
        // return $getUserData;
@@ -90,12 +90,9 @@ class userUpdateController extends Controller
         $address= $request->address;
        // $image= $request->image;
         
-
-
      //   return $image;
 
      //return $request->$name;
-
 
         if($getUserData){
             $getUserData->name = $name;
@@ -105,17 +102,16 @@ class userUpdateController extends Controller
             $getUserData->gender = $gender;
             $getUserData->birth_day = $birth_day;
             $getUserData->address = $address;
-            
-            
+    
             if($getUserData->save()){
-              return 'user update success';  
-            }
-            
+                return response()->json(['success'=>'Your Profile Update success', 'status'=>200]);
+            }    
         }else{
-            return 'upser profile update fiald';
+            return response()->json(['error'=>'Your NID not match, please try again valid NID', 'status'=>203]);
         }
-
-
+        }else{
+            return response()->json(['error'=>'Your NID not match, please try again valid NID', 'status'=>203]);
+        }
     }
 
     /**
