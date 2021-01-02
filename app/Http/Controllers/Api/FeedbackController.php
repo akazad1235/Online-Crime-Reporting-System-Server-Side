@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,27 +36,43 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //return $request->all();
+      //  return response()->json(['success'=>$request->all()]);
+        $profession = $request->profession;
+        $desc = $request->desc;
+        $id = $request->reg_id;
+        $data = [
+            'profession' => $profession,
+            'desc' => $desc,
+            'reg_id' => $id
+        ];
+
+        $result = Feedback::create($data);
+        if($result){
+            return response()->json(['success'=>'Feedback Added Success', 'status'=>200]);
+        }else{
+            return response()->json(['error'=>'Feedback Added Faild', 'status'=>203]);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Feedback  $feedback
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Feedback $feedback)
+    public function show($id)
     {
-        //
+        return 'update';
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Feedback  $feedback
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Feedback $feedback)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +81,10 @@ class FeedbackController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Feedback  $feedback
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Feedback $feedback)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +92,10 @@ class FeedbackController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Feedback  $feedback
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Feedback $feedback)
+    public function destroy($id)
     {
         //
     }
