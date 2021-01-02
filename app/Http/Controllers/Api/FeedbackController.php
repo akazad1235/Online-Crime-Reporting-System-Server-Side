@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Feedback;
 use Illuminate\Http\Request;
+use DB;
 
 class FeedbackController extends Controller
 {
@@ -15,7 +16,11 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+       // return Feedback::get();
+        return  DB::table('feedback')
+                ->leftJoin('user_registrations', 'feedback.reg_id', '=', 'user_registrations.id')
+                ->select('feedback.*', 'user_registrations.image', 'user_registrations.name')
+                ->get();
     }
 
     /**

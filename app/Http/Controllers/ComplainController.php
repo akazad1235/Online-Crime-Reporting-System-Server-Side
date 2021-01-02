@@ -16,8 +16,7 @@ class ComplainController extends Controller
      */
     public function index()
     {
-       // return session()->get('stationId');
-        
+       // return session()->get('stationId'); 
        $allComplain = DB::table('complains')
                         ->join('user_registrations', 'complains.reg_id', '=' , 'user_registrations.id')
                         ->join('police_stations', 'complains.station_id', '=', 'police_stations.id')

@@ -19,6 +19,17 @@ class userComplainController extends Controller
      */
     public function index()
     {
+
+        $totalUser = DB::table('user_registrations')->pluck('id')->count();
+        $totalComp = DB::table('complains')->pluck('id')->count();
+        $done = DB::table('complains')->where('comp_status', 2)->pluck('comp_status')->count();
+        $pending = DB::table('complains')->where('comp_status', 0)->pluck('comp_status')->count();
+
+        return response()->json(['totalUser'=>$totalUser, 'totalComp'=>$totalComp, 'done'=>$done,'pending'=>$pending, 'status'=>200]);
+        
+        return json_decode($number);
+        
+        return $collection->all();
         
              $adddd =  DB::table('complains')
             ->join('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')
