@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Criminal;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,7 +49,19 @@ class criminalApiController extends Controller
      */
     public function show($id)
     {
-        //
+        $getCriminalById = Criminal::find($id);
+
+        //get all admin or super admin info by criminal foreign key id
+        $getAdmin = User::where('id', $getCriminalById->admin_id)->get();
+        $adminName = $getAdmin[0]['name'];
+        $admin_rules = $getAdmin[0]['is_admin'];
+        $admin = (object) [
+            'adminName' =>  $adminName,
+            'admin_rules' => $admin_rules,
+        ];
+
+        
+        return response()->json(['success'=>'Criminal get success', 'status'=>200, 'result'=>$getCriminalById, 'admin'=> $admin]);
     }
 
     /**
@@ -58,7 +72,7 @@ class criminalApiController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Criminal extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'desc', 'image', 'status'];
+    protected $fillable = ['admin_id','name', 'desc', 'image', 'status'];
 }

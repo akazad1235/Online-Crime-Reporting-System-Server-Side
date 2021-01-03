@@ -27,9 +27,9 @@ class userComplainController extends Controller
 
         return response()->json(['totalUser'=>$totalUser, 'totalComp'=>$totalComp, 'done'=>$done,'pending'=>$pending, 'status'=>200]);
         
-        return json_decode($number);
+        // return json_decode($number);
         
-        return $collection->all();
+        // return $collection->all();
         
              $adddd =  DB::table('complains')
             ->join('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')

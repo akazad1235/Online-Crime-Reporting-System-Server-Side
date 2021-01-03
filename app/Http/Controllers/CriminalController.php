@@ -39,6 +39,8 @@ class CriminalController extends Controller
      */
     public function store(Request $request)
     {
+        //admin id from session id by admin login
+        $adminId = auth()->user()->id;
 
         $name = $request->input('name');
         $desc = $request->input('desc');
@@ -51,7 +53,8 @@ class CriminalController extends Controller
        $create = Criminal::create([
            'name' => $name,
            'image' => $fileName,
-           'desc' => $desc
+           'desc' => $desc,
+           'admin_id' => $adminId
        ]);
        if ($create == true) {
            return back()->with('added_recorded', 'Criminals Added Successfully');

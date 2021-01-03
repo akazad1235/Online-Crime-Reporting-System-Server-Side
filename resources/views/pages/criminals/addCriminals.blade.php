@@ -23,7 +23,7 @@
                             </script>
                         @endif
                          @if(Session::has('error_recorded'))
-                            <sc></sc>ript>
+                            <script>
                                 toastr.error("{!!Session::get('error_recorded')!!}");
                             </script>
                         @endif

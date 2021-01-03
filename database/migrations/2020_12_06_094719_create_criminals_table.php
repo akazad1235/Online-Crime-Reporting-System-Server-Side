@@ -15,11 +15,15 @@ class CreateCriminalsTable extends Migration
     {
         Schema::create('criminals', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('admin_id');
             $table->string('name');
             $table->string('desc');
             $table->string('image');
             $table->string('status')->default(1);
             $table->timestamps();
+            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
+
+
         });
     }
 
