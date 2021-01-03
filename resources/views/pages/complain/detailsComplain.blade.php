@@ -140,12 +140,14 @@
                                 </div>
                                 <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" id="buttonId" onclick="updateId(this.id)" class="btn btn-primary">Update Status</button>
+                                <button type="button" id="buttonId" onclick="GetupdateId(this.id)" class="btn btn-primary">Update Status</button>
                                 </div>
                             </div>
                             </div>
                         </div>
             <script>
+                
+                //Complain Staus Update by modal
                 function statusUpdate(id){
                     //console.log(id);
                    axios.get('/updateStatus', {
@@ -187,8 +189,8 @@
                         console.log(error);
                     })
                 }
-
-                function updateId(id){
+                //get update id from modal button click
+                function GetupdateId(id){
                    // console.log(id);
                      let selectValue = document.getElementById('currentStatus').value
                     // console.log(selectValue);

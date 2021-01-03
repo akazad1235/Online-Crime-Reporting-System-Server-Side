@@ -49,7 +49,7 @@
 
                             <td>{{ $value->updated_at->diffForHumans() }}</td>
                             
-                            <td><span class="badge badge-{{$value->status == 1?'success':'danger'}}">{{$value->status == 1 ? 'Arrest ': 'Warrant'}}</span></td>
+                            <td><span class="badge badge-{{$value->status == 0?'success':'danger'}}">{{$value->status == 1 ? 'Warrant': 'Arrest'}}</span></td>
                             <td><a class="btn btn-info btn-sm" href="{{ route('criminals.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('criminals.delete', base64_encode($value->id))}}">Delete</a></td>
                         </tr>
                         @endforeach

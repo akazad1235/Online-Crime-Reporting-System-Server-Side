@@ -14,11 +14,11 @@ class userController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function get()
     {
-        $allUser = User::get();
+        $admin = User::get();
 
-        return view ('pages.users.manageUser', compact('allUser'));
+         view ('pages.users.manageUser', compact('admin'));
     }
 
     /**
@@ -28,6 +28,7 @@ class userController extends Controller
      */
     public function create()
     {
+       
         $getSation = policeStation::get();
         return view('pages.users.addUsers', compact('getSation'));
     }

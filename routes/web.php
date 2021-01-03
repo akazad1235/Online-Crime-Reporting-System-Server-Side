@@ -11,6 +11,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\NationalIDController;
 use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\AdminController;
+
 
 use GuzzleHttp\Middleware;
 
@@ -88,12 +90,12 @@ Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
            // Route::get('/show', [ComplainController::class, 'show']); 
         });
 
-        //Users is create the group
+       // Users is create the group
         Route::prefix('users')->name('users.')->group(function () {
 
-            Route::get('/index', [userController::class, 'index'])->name('index');
-            Route::get('/create', [userController::class, 'create'])->name('create');
-            Route::post('/store', [userController::class, 'store'])->name('store');
+            Route::get('/index', [AdminController::class, 'index'])->name('index');
+            Route::get('/create', [AdminController::class, 'create'])->name('create');
+            Route::post('/store', [AdminController::class, 'store'])->name('store');
         
         });
 

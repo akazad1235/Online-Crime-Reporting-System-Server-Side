@@ -138,6 +138,7 @@ class userComplainController extends Controller
      */
     public function show($id)
     {
+     //   return 'ok';
         $complianDataById =  DB::table('complains')
             ->leftJoin('user_registrations', 'complains.reg_id', '=', 'user_registrations.id')
             ->select('complains.*', 'user_registrations.name', 'user_registrations.email')

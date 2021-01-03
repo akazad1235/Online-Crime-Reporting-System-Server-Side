@@ -90,6 +90,7 @@
         <!-- END wrapper -->
 
         <!-- Vendor js -->
+       
 
         <script src="{{asset('admin/js/vendor.min.js')}}"></script>
 
@@ -128,6 +129,7 @@
 
         <!-- moment js for date -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+        
         
             <script>
                // toastr.success("{!!Session::get('added_recorded')!!}");

@@ -140,8 +140,11 @@ class ComplainController extends Controller
         $id =  $request->id;
         return Complain::find($id);
     }
+
+
+    //Complain Status update
     public function updateId(Request $request){
-        $id =  $request->all();
+        $id =  $request->id;
         $getData =  Complain::where('id', $id)->find($id);
         
 

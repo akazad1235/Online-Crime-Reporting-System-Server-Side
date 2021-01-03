@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\userRegistration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Image;
 
 class UserRegistrationController extends Controller
 {
@@ -36,25 +37,32 @@ class UserRegistrationController extends Controller
      */
     public function store(Request $request)
     {
+      //  return $request->all();
         //check user email exits or not
         $exitEmail =  userRegistration::where('email', $request->email)->count();
-        
         
         $name = $request->name;
         $email = $request->email;
         $gender = $request->gender;
         $birthDay = $request->birth_day;
+        $image = $request->file('image');
         $password = md5($request->password);
      //  return [$birthDay,$gender];
 
      if($exitEmail == true){
         return response()->json(['warning'=>'User Already Exits, try another email', 'status'=>'302']);
     }elseif($exitEmail == false){
+        //   // return $image;
+          $fileName = rand(0, 999999999) . '_' . date('Ymdhis').'_' . rand(100, 999999999) . '.' . $image->getClientOriginalExtension();
+          // return $fileName;
+          Image::make($image)->resize(200, 200)->save(public_path('admin/images/profile/').$fileName );
+
         $userRegister= userRegistration::create([
             'name' => $name,
             'email' => $email,
             'gender' => $gender,
             'birth_day' => $birthDay,
+            'image' => $fileName,
             'password' => $password
         ]);
     return response()->json(['success'=>'User Registration Success', 'status'=>'200','data'=>$userRegister]);
@@ -73,9 +81,10 @@ class UserRegistrationController extends Controller
      * @param  \App\Models\userRegistration  $userRegistration
      * @return \Illuminate\Http\Response
      */
-    public function show(userRegistration $userRegistration)
+    public function show(userRegistration $userRegistration, $id)
     {
-        //
+       // return $id;
+       return userRegistration::find($id);
     }
 
     /**
@@ -84,9 +93,9 @@ class UserRegistrationController extends Controller
      * @param  \App\Models\userRegistration  $userRegistration
      * @return \Illuminate\Http\Response
      */
-    public function edit(userRegistration $userRegistration)
+    public function edit(userRegistration $userRegistration )
     {
-        //
+        
     }
 
     /**

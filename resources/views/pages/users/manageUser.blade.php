@@ -39,7 +39,7 @@
                         </thead>
 
                         <tbody>
-                        @foreach($allUser as $value)
+                        @foreach($admin as $value)
                              <tr>
                             <td></td>
                             <td>{{ $value->station }}</td>

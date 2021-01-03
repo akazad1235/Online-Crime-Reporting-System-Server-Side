@@ -91,7 +91,7 @@ class userController extends Controller
             $getUser->varification_code = $varification_code;
             $getUser->save();
           //  return 'update';
-            //   Mail::to($email)->send(new accountActive($name, $id, $varification_code));
+               Mail::to($email)->send(new accountActive($name, $id, $varification_code));
             return response()->json(['success'=>'Activation code send success, Please Check Your Email', 'result'=>$getUser]);
           }
     }
