@@ -47,10 +47,11 @@ class UserRegistrationController extends Controller
         
         $exitEmail =  userRegistration::where('email', $request->email)->count();
 
-        //check exists nid valid or not
-        $nid = $request->nid;  
-        $checkNID = DB::table('national_i_d_s')->where('NID_No', $nid)->count();
-       if($checkNID == true){
+        //check exists nid number request from client valid or not
+        $nid = $request->nid;
+        $checkNID = NationalID::where('NID_No', $nid)->count();
+       // $getCheckNid =  $checkNID[0]['NID_No'];
+       if($checkNID === true){
            return response()->json(['result'=>$checkNID]);
        }else{
         return response()->json(['result'=>$checkNID]);

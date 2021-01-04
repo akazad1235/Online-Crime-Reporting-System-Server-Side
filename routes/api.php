@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\testController;
 use App\Http\Controllers\criminalApiController;
 use App\Http\Controllers\UserRegistrationController;
+use App\Http\Controllers\Api\VerifyRegistrationController;
 use App\Http\Controllers\Api\userController;
 use App\Http\Controllers\Api\userComplainController;
 use App\Http\Controllers\Api\userUpdateController;
@@ -35,6 +36,7 @@ Route::resource('/criminals', criminalApiController::class);
 
 //User Register
 Route::resource('/register', UserRegistrationController::class);
+Route::resource('/verifyEmail', VerifyRegistrationController::class);
 
 Route::resource('/users', userController::class);
 
