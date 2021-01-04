@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\userRegistration;
 use Illuminate\Http\Request;
+use App\Mail\accountActive;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use App\Models\NationalID;
 use Image;
+use Illuminate\Support\Facades\DB;
 
 class UserRegistrationController extends Controller
 {
@@ -37,14 +41,27 @@ class UserRegistrationController extends Controller
      */
     public function store(Request $request)
     {
-      //  return $request->all();
+      // return $request->all();
         //check user email exits or not
-        $exitEmail =  userRegistration::where('email', $request->email)->count();
+
         
+        $exitEmail =  userRegistration::where('email', $request->email)->count();
+
+        //check exists nid valid or not
+        $nid = $request->nid;  
+        $checkNID = DB::table('national_i_d_s')->where('NID_No', $nid)->count();
+       if($checkNID == true){
+           return response()->json(['result'=>$checkNID]);
+       }else{
+        return response()->json(['result'=>$checkNID]);
+       }
+
         $name = $request->name;
         $email = $request->email;
+        $nid = $request->nid_no;
         $gender = $request->gender;
         $birthDay = $request->birth_day;
+        $varification_code = $request->varification_code;
         $image = $request->file('image');
         $password = md5($request->password);
      //  return [$birthDay,$gender];
@@ -63,11 +80,16 @@ class UserRegistrationController extends Controller
             'gender' => $gender,
             'birth_day' => $birthDay,
             'image' => $fileName,
+            'varification_code' => $varification_code,
             'password' => $password
         ]);
-    return response()->json(['success'=>'User Registration Success', 'status'=>'200','data'=>$userRegister]);
+        //if($userRegister == true) {
+            Mail::to($email)->send(new accountActive($name, $varification_code));
+          return response()->json(['success'=>'User Registration Success', 'status'=>'200','data'=>$userRegister]);
+        //}
+   
     }else{
-        return response()->json(['danger'=>'User Registration Faild', 'status'=>'404']);
+        return response()->json(['danger'=>'User Registration Failds', 'status'=>'404']);
     }
 
       

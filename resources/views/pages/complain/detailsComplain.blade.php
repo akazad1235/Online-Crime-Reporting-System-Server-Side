@@ -160,7 +160,7 @@
                          console.log(res.data.comp_status);   
                         var updateId =  document.getElementsByTagName("option") 
                         console.log(updateId);
-                        var para = document.getElementById('p')
+                        var pa  ra = document.getElementById('p')
                         console.log(para);
                         for (let index = 0; index < updateId.length; index++) {
                             const element = updateId[index];

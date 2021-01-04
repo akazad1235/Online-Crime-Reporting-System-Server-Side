@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\userController;
 use App\Http\Controllers\Api\userComplainController;
 use App\Http\Controllers\Api\userUpdateController;
 use App\Http\Controllers\Api\FeedbackController;
+use App\Http\Controllers\Api\CommentsController;
+
 
 
 /*
@@ -42,6 +44,9 @@ Route::resource('/updateProfile', userUpdateController::class);
 
 //user feedback
 Route::resource('/feedback', FeedbackController::class);
+
+//user comments
+Route::resource('/comments', CommentsController::class);
 
 
 //user Registration

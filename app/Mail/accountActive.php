@@ -12,7 +12,6 @@ class accountActive extends Mailable
     use Queueable, SerializesModels;
 
     public $name;
-    public $id;
     public $varification_code;
 
     /**
@@ -20,10 +19,9 @@ class accountActive extends Mailable
      *
      * @return void
      */
-    public function __construct($name, $id, $varification_code)
+    public function __construct($name, $varification_code)
     {
         $this->name = $name;
-        $this->id = $id;
         $this->varification_code = $varification_code;
     }
 
@@ -34,6 +32,6 @@ class accountActive extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.userVerify')->with('name', $this->name)->with('id', $this->id)->with('verify_code',$this->varification_code  );
+        return $this->view('mail.userVerify')->with('name', $this->name)->with('verify_code',$this->varification_code  );
     }
 }

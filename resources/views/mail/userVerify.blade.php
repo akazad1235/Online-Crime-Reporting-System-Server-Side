@@ -24,7 +24,8 @@
 <body>
     <div class="mail-body">
         <h2>{{$name}}</h2>
-        <a href="{{route('verify-code',[$id, $varification_code])}}">token code: {{$varification_code}}</a>
+        {{-- <a href="{{route('verify-code',[$varification_code])}}">token code: {{$varification_code}}</a> --}}
+        <p>{{$varification_code}}</p>
     </div>
     
 </body>
