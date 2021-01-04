@@ -14,9 +14,9 @@ function randomStatusColor($status){
 function statusName($stdName){
 
     $setName = [
-        '0' => 'danger',
+        '0' => 'Panding',
         '1' => 'Processing',
-        '2'  => 'success',
+        '2'  => 'Success',
     ];
 
     return $setName[$stdName];

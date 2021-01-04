@@ -49,17 +49,20 @@ class UserRegistrationController extends Controller
 
         //check exists nid number request from client valid or not
         $nid = $request->nid;
+       if($nid){
         $checkNID = NationalID::where('NID_No', $nid)->count();
-       // $getCheckNid =  $checkNID[0]['NID_No'];
-       if($checkNID === true){
-           return response()->json(['result'=>$checkNID]);
-       }else{
-        return response()->json(['result'=>$checkNID]);
+        // $getCheckNid =  $checkNID[0]['NID_No'];
+        if($checkNID === true){
+            return response()->json(['result'=>$checkNID]);
+        }else{
+         return response()->json(['result'=>$checkNID]);
+        }
        }
 
+       
         $name = $request->name;
         $email = $request->email;
-        $nid = $request->nid_no;
+        $nid_no = $request->nid_no;
         $gender = $request->gender;
         $birthDay = $request->birth_day;
         $varification_code = $request->varification_code;
@@ -78,6 +81,7 @@ class UserRegistrationController extends Controller
         $userRegister= userRegistration::create([
             'name' => $name,
             'email' => $email,
+            'nid' => $nid_no,
             'gender' => $gender,
             'birth_day' => $birthDay,
             'image' => $fileName,
@@ -86,7 +90,7 @@ class UserRegistrationController extends Controller
         ]);
         //if($userRegister == true) {
             Mail::to($email)->send(new accountActive($name, $varification_code));
-          return response()->json(['success'=>'User Registration Success', 'status'=>'200','data'=>$userRegister]);
+          return response()->json(['success'=>'User Registration Success', 'status'=>'200','result'=>$userRegister]);
         //}
    
     }else{

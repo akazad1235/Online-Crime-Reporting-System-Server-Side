@@ -149,7 +149,7 @@
                 
                 //Complain Staus Update by modal
                 function statusUpdate(id){
-                    //console.log(id);
+                    console.log(id);
                    axios.get('/updateStatus', {
                             params: {
                             id: id
@@ -158,10 +158,9 @@
                     .then(function (res) {
                          let result = res.data;       
                          console.log(res.data.comp_status);   
-                        var updateId =  document.getElementsByTagName("option") 
-                        console.log(updateId);
-                        var pa  ra = document.getElementById('p')
-                        console.log(para);
+                         var updateId =  document.getElementsByTagName("option") 
+                         console.log(updateId);
+
                         for (let index = 0; index < updateId.length; index++) {
                             const element = updateId[index];
                            // console.log(element.value);
@@ -189,11 +188,12 @@
                         console.log(error);
                     })
                 }
+                
                 //get update id from modal button click
                 function GetupdateId(id){
-                   // console.log(id);
+                    //console.log(id);
                      let selectValue = document.getElementById('currentStatus').value
-                    // console.log(selectValue);
+                     console.log(selectValue);
                     axios.get('/updateId', {
                             params: {
                             id: id,
@@ -202,8 +202,9 @@
                         })
                         .then(function(res){
                             console.log(res.data);
-                            // $('#laodContent').load(location.href + '#laodContent');
+                           // $('#laodContent').load(location.href + '#laodContent');
                             location.reload()
+                           
                             $('#statusModal').modal('toggle');
                         } )
                         .catch(function (error) {
