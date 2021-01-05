@@ -68,7 +68,7 @@
             <div class="content-page">
                 <div class="content">
                 <!-- start page title -->
-                 @include('layouts.pageTitle')   
+                 {{-- @include('layouts.pageTitle')    --}}
                 <!-- end page title --> 
                     <!-- Start Content-->
                   @yield('content')

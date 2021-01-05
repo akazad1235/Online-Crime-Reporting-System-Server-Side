@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title font-weight-bold">Add Police Station</h4>
+                    <h4 class="header-title font-weight-bold text-primary font">Add District Name</h4>
                     <p class="sub-header">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -34,7 +34,7 @@
                             <form action="{{route('district.store')}}" method="post">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label for="simpleinput">District Name<apan class="text-danger">*</apan></label>
+                                    <label for="simpleinput">District Name<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control" name="district" placeholder="Enter District Name" required  />
                                 </div>
                                

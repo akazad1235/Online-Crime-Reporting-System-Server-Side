@@ -40,9 +40,9 @@
                                 <a href="javascript:void(0);" class="dropdown-item notify-item active">
                                     <div class="notify-icon">
                                         <img src="assets/images/users/user-1.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">Cristina Pride</p>
+                                    <p class="notify-details">Marder</p>
                                     <p class="text-muted mb-0 user-msg">
-                                        <small>Hi, How are you? What about our next meeting</small>
+                                        <small>This is marder case, please added</small>
                                     </p>
                                 </a>
 
@@ -51,51 +51,12 @@
                                     <div class="notify-icon bg-primary">
                                         <i class="mdi mdi-comment-account-outline"></i>
                                     </div>
-                                    <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <p class="notify-details">commented on Admin
                                         <small class="text-muted">1 min ago</small>
                                     </p>
                                 </a>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon">
-                                        <img src="assets/images/users/user-4.jpg" class="img-fluid rounded-circle" alt="" /> </div>
-                                    <p class="notify-details">Karen Robinson</p>
-                                    <p class="text-muted mb-0 user-msg">
-                                        <small>Wow ! this admin looks good and awesome design</small>
-                                    </p>
-                                </a>
 
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon bg-warning">
-                                        <i class="mdi mdi-account-plus"></i>
-                                    </div>
-                                    <p class="notify-details">New user registered.
-                                        <small class="text-muted">5 hours ago</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon bg-info">
-                                        <i class="mdi mdi-comment-account-outline"></i>
-                                    </div>
-                                    <p class="notify-details">Caleb Flakelar commented on Admin
-                                        <small class="text-muted">4 days ago</small>
-                                    </p>
-                                </a>
-
-                                <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <div class="notify-icon bg-secondary">
-                                        <i class="mdi mdi-heart"></i>
-                                    </div>
-                                    <p class="notify-details">Carlos Crouch liked
-                                        <b>Admin</b>
-                                        <small class="text-muted">13 days ago</small>
-                                    </p>
-                                </a>
                             </div>
 
                             <!-- All-->
@@ -126,17 +87,6 @@
                                 <span>My Account</span>
                             </a>
 
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-settings"></i>
-                                <span>Settings</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                <i class="fe-lock"></i>
-                                <span>Lock Screen</span>
-                            </a>
 
                             <div class="dropdown-divider"></div>
 
@@ -153,11 +103,7 @@
                         </div>
                     </li>
 
-                    <li class="dropdown notification-list">
-                        <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
-                            <i class="fe-settings noti-icon"></i>
-                        </a>
-                    </li>
+
 
 
                 </ul>
@@ -183,7 +129,7 @@
                         </button>
                     </li>
         
-                    <li class="dropdown d-none d-lg-block">
+                    {{-- <li class="dropdown d-none d-lg-block">
                         <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                             Create New
                             <i class="mdi mdi-chevron-down"></i> 
@@ -222,7 +168,7 @@
                             </a>
 
                         </div>
-                    </li>
+                    </li> --}}
 
    
                 </ul>

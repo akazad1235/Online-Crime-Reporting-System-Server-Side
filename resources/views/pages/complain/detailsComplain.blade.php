@@ -3,7 +3,7 @@
 <div class="row">
             <div class="col-sm-12" >
                 <div class="card-box" id="laodContent">
-                    <h3 class="header-title font-weight-bold mb-2 text-primary">Complain Details</h3>
+                    <h3 class="header-title font-weight-bold mb-2 text-primary font">Complain Details</h3>
                     
                         @if(Session::has('added_recorded'))
                             <script>

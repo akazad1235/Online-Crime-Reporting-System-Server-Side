@@ -12,6 +12,7 @@ use App\Http\Controllers\testController;
 use App\Http\Controllers\NationalIDController;
 use App\Http\Controllers\UserRegistrationController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserFeedbackController;
 
 
 use GuzzleHttp\Middleware;
@@ -114,6 +115,15 @@ Route::group(['middleware' => 'admin', 'middleware' => 'auth',], function(){
             Route::post('/store', [NationalIDController::class, 'store'])->name('store');
  
         });
+        //Addmin Feedback to Your create the group
+        Route::prefix('feedback')->name('feedback.')->group(function () {
+
+            Route::get('/index', [UserFeedbackController::class, 'index'])->name('index');
+            Route::get('/get', [UserFeedbackController::class, 'store']);
+            Route::put('/update/{id}', [UserFeedbackController::class, 'update']);
+            //Route::post('/store', [FeedbackController::class, 'store'])->name('store');
+ 
+        });
   
         //use router
         Route::get('/', [HomeController::class, 'dashboard']);
@@ -143,6 +153,8 @@ Route::get('/verified/{id}/token/{verification_code}', [userController::class, '
 Route::get('/details', [ComplainController::class, 'details']);
 Route::get('/updateStatus', [ComplainController::class, 'updateStatus']);
 Route::get('/updateId', [ComplainController::class, 'updateId']);
+
+
 
 
 

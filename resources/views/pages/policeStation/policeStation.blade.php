@@ -3,7 +3,7 @@
 <div class="row">
             <div class="col-sm-12">
                 <div class="card-box">
-                    <h4 class="header-title font-weight-bold">All Police Station</h4>
+                    <h4 class="header-title font-weight-bold text-primary font">All Police Station</h4>
                     
                         @if(Session::has('added_recorded'))
                             <script>
@@ -16,9 +16,9 @@
                             </script>
                         @endif
 
-                    <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>
+                   
                     <table id="demo-custom-toolbar"  data-toggle="table"
-                            data-toolbar="#demo-delete-row"
+                           
                             data-search="true"
                             data-show-refresh="true"
                             data-show-columns="true"
@@ -28,7 +28,7 @@
                             data-pagination="true" data-show-pagination-switch="true" class="table-borderless">
                         <thead class="thead-light">
                         <tr>
-                            <th data-field="state" data-checkbox="true"></th>
+                            
                             <th data-field="id" data-sortable="true" >Station Code</th>
                             <th data-field="name" data-sortable="true">Name</th>
                             <th data-field="email" data-sortable="true">Email</th>
@@ -40,7 +40,6 @@
                         <tbody>
                         @foreach($getAllStation as $value)
                              <tr>
-                            <td></td>
                             <td>{{ $value->stationCode }}</td>
                             <td>{{ $value->policeStationName }}</td>
                             <td>{{ $value->email }}</td>

@@ -16,7 +16,7 @@ function statusName($stdName){
     $setName = [
         '0' => 'Panding',
         '1' => 'Processing',
-        '2'  => 'Success',
+        '2'  => 'Sovled',
     ];
 
     return $setName[$stdName];

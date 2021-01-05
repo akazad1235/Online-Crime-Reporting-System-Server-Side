@@ -3,7 +3,7 @@
 <div class="row">
             <div class="col-sm-12">
                 <div class="card-box">
-                    <h4 class="header-title font-weight-bold">All Police Station</h4>
+                    <h4 class="header-title font-weight-bold text-primary font">All Complain</h4>
                     
                         @if(Session::has('added_recorded'))
                             <script>
@@ -16,9 +16,8 @@
                             </script>
                         @endif
                 
-                    <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>
+                   
                     <table id="demo-custom-toolbar"  data-toggle="table"
-                            data-toolbar="#demo-delete-row"
                             data-search="true"
                             data-show-refresh="true"
                             data-show-columns="true"
@@ -28,7 +27,8 @@
                             data-pagination="true" data-show-pagination-switch="true" class="table-borderless">
                         <thead class="thead-light">
                         <tr>
-                            <th data-field="state" data-checkbox="true"></th>
+
+                            <th data-field="no" data-sortable="true" >No</th>
                             <th data-field="name" data-sortable="true" >Name</th>
                             <th data-field="station" data-sortable="true">Station</th>
                             <th data-field="complainName" data-sortable="true">Complain Name</th>
@@ -39,31 +39,36 @@
                         </thead>
 
                         <tbody>
+                            @php
+                            $i=1;
+                            @endphp
                     @if(auth()->user()->is_admin == 1  )
+                        
                         @foreach($allComplain as $value)
                              <tr>
-                            <td></td>
+                            <td>{{$i++}}</td>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->policeStationName }}</td>
-                            <td>{{ $value->complain_name }}</td>
-                            <td>{{ date('d-M-Y h:i:a', strtotime($value->created_at))  }}</td>
-                            <td><span class="badge  badge-{{ randomStatusColor($value->comp_status)}} text-capitalize">{{statusName($value->comp_status)}}</span></td>
+                            <td>{{ $value->complain_type }}</td>
+                            {{-- <td>{{ date('d-M-Y h:i:a', strtotime($value->created_at))  }}</td> --}}
+                            <td>{{ date('d-M-Y', strtotime($value->created_at))  }}</td>
+                            <td><span class="badge  badge-{{ randomStatusColor($value->comp_status)}} text-capitalize text-weight-bold">{{statusName($value->comp_status)}}</span></td>
 
-                            <td> <a class="btn btn-warning btn-sm" href="{{ route('complain.details', base64_encode($value->id))}}">Info</a> <a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
+                            <td> <a class="btn btn-warning btn-sm" href="{{ route('complain.details', base64_encode($value->id))}}">Info</a></td>
                         </tr> 
                         @endforeach
                         
                     @elseif(auth()->user()->is_admin == 0)
                     @foreach($comById as $value)
                             <tr>
-                            <td></td>
+                            <td>{{$i++}}</td>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->policeStationName }}</td>
-                            <td>{{ $value->complain_name }}</td>
-                            <td>{{ $value->created_at }}</td>
+                            <td>{{ $value->complain_type }}</td>
+                            <td>{{ date('d-M-Y', strtotime($value->created_at))  }}</td>
                             <td><span class="badge  badge-{{ randomStatusColor($value->comp_status) }} text-capitalize">{{$value->comp_status}}</span></td>
 
-                            <td> <a class="btn btn-danger btn-sm" href="{{ route('complain.details', base64_encode($value->id))}}">Info</a><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
+                            <td> <a class="btn btn-danger btn-sm" href="{{ route('complain.details', base64_encode($value->id))}}">Info</a></td>
                         </tr>
               
                @endforeach

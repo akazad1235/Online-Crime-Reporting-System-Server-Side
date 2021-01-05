@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title font-weight-bold">Add Criminals</h4>
+                    <h2 class="header-title font-weight-bold text-primary font">Wanted Criminal</h2>
                     <p class="sub-header">
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -34,24 +34,24 @@
                             <form action="{{route('criminals.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group mb-3">
-                                    <label for="simpleinput">Name<apan class="text-danger">*</apan></label>
+                                    <label for="simpleinput">Name<span class="text-danger">*</span></label>
                                     <input type="text" id="simpleinput" class="form-control" name="name" placeholder="Criminals Name" required />
                                 </div>
                                 <div class="form-group mb-3">
                                     
-                                    <label for="example-email">Image<apan class="text-danger">*</apan></label>
+                                    <label for="example-email">Image<span class="text-danger">*</span></label>
                                     <input type="file" id="example-email" name="image" class="form-control" onChange="loadFile(event)"/>
                                     <img id="output" style="width:200px; height:200px; margin:3px" />
                     
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="example-textarea">desc<apan class="text-danger">*</apan></label>
+                                    <label for="example-textarea">desc<span class="text-danger">*</span></label>
                                     <textarea class="form-control" id="example-textarea" rows="5" name="desc" rows="5" name="address" placeholder="Criminals Description"></textarea>
                                 </div>
                                 <div class="form-group mb-3">
                                     <label for="example-textarea"></label>
-                                    <input type="submit"  class=" btn btn-danger"  value="submit">
+                                    <input type="submit"  class=" btn btn-primary"  value="submit">
                                 </div>
                             </form>
                         </div> <!-- end col -->

@@ -3,7 +3,7 @@
 <div class="row">
             <div class="col-sm-12">
                 <div class="card-box">
-                    <h4 class="header-title font-weight-bold">All Criminals List</h4>
+                    <h4 class="header-title font-weight-bold text-primary font">All Wanted Criminals List</h4>
                     
                         @if(Session::has('added_recorded'))
                             <script>
@@ -15,10 +15,8 @@
                                 toastr.error("{!!Session::get('error_recorded')!!}");
                             </script>
                         @endif
-
-                    <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>
                     <table id="demo-custom-toolbar"  data-toggle="table"
-                            data-toolbar="#demo-delete-row"
+                           
                             data-search="true"
                             data-show-refresh="true"
                             data-show-columns="true"
@@ -28,8 +26,9 @@
                             data-pagination="true" data-show-pagination-switch="true" class="table-borderless">
                         <thead class="thead-light">
                         <tr>
-                            <th data-field="state" data-checkbox="true"></th>
-                            <th data-field="nate" data-sortable="true" data-formatter="dateFormatter">Name</th>
+                        
+                            <th data-field="no" data-sortable="true" data-formatter="dateFormatter">No</th>
+                            <th data-field="name" data-sortable="true" data-formatter="dateFormatter">Name</th>
                             <th data-field="image" data-sortable="true" data-formatter="dateFormatter">Image</th>
                             <th data-field="desc" data-sortable="true" data-formatter="dateFormatter">Description</th>
                             <th data-field="create_date" data-sortable="true" data-formatter="dateFormatter">Create Date</th>
@@ -39,9 +38,12 @@
                         </thead>
 
                         <tbody>
+                            @php
+                                $i=1;     
+                            @endphp
                         @foreach($allCrimicals as $value)
                         <tr>
-                            <td></td>
+                            <td>{{$i++}}</td>
                             <td>{{ $value->name }}</td>
                            <td><img style="width:80px; height:50px; border-radius:5px" src="{{asset('admin/images/criminals/'.$value->image)}}" /></td>
                             <td>{{ substr($value->desc, 0, 20) }}</td>

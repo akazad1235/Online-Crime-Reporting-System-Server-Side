@@ -2,8 +2,8 @@
 @section('content')
 <div class="row">
             <div class="col-sm-12">
-                <div class="card-box">
-                    <h4 class="header-title font-weight-bold">All Police Station</h4>
+                <div class="card-box"> 
+                    <h4 class="header-title font-weight-bold text-primary font">All Admin</h4>
                     
                         @if(Session::has('added_recorded'))
                             <script>
@@ -15,10 +15,8 @@
                                 toastr.error("{!!Session::get('error_recorded')!!}");
                             </script>
                         @endif
-
-                    <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>
                     <table id="demo-custom-toolbar"  data-toggle="table"
-                            data-toolbar="#demo-delete-row"
+                        
                             data-search="true"
                             data-show-refresh="true"
                             data-show-columns="true"
@@ -28,26 +26,30 @@
                             data-pagination="true" data-show-pagination-switch="true" class="table-borderless">
                         <thead class="thead-light">
                         <tr>
-                            <th data-field="state" data-checkbox="true"></th>
+                            
+                            <th data-field="no" data-sortable="true" >No</th>
                             <th data-field="id" data-sortable="true" >Station</th>
                             <th data-field="name" data-sortable="true">Name</th>
                             <th data-field="email" data-sortable="true">Email</th>
                             <th data-field="uesr_rules" data-sortable="true" data-formatter="dateFormatter">User Rules</th>
                             <th data-field="status" data-sortable="true" data-formatter="dateFormatter">Status</th>
-                            <th data-field="action" data-sortable="true">Action</th>
+                            
                         </tr>
                         </thead>
 
                         <tbody>
+                            @php
+                                $i=1;
+                            @endphp
                         @foreach($admin as $value)
                              <tr>
-                            <td></td>
+                            <td>{{$i++}}</td>
                             <td>{{ $value->station }}</td>
                             <td>{{ $value->name }}</td>
                             <td>{{ $value->email }}</td>
                             <td>{{ $value->is_admin == 1? 'Admin' : 'User' }}</td>
                             <td><span class="badge  badge-{{($value->status == 1 ? 'success' : 'danger' ) }} text-capitalize">{{$value->status ==1 ? 'Active':'Inactive' }}</span></td>
-                            <td><a class="btn btn-info btn-sm" href="{{ route('station.edit', base64_encode($value->id))}}">Edit</a> <a class="btn btn-danger btn-sm" href="{{ route('station.delete', base64_encode($value->id))}}">Delete</a></td>
+                            
                         </tr>
                         @endforeach
                         </tbody>

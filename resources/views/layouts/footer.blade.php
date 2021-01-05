@@ -2,7 +2,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    2015 - 2019 &copy; UBold theme by <a href="#">Coderthemes</a> 
+                    2020-2021 &copy; online Crime Reporting System
                 </div>
                 <div class="col-md-6">
                     <div class="text-md-right footer-links d-none d-sm-block">

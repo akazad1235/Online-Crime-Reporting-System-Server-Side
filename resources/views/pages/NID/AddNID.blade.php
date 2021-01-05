@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="header-title font-weight-bold">Add <span class="text-primary"> National ID Card </span>Information</h4>
+                    <h4 class="header-title font-weight-bold font">Add <span class="text-primary "> National ID Card </span>Information</h4>
                     <p class="sub-header">
                         @if ($errors->any())
                             <div class="alert alert-danger">

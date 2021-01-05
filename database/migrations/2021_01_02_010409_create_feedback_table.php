@@ -16,8 +16,10 @@ class CreateFeedbackTable extends Migration
         Schema::create('feedback', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('reg_id');
-            $table->string('profession');
+            $table->string('profession')->nullable();
             $table->text('desc');
+            $table->integer('approve')->default(0);
+            $table->integer('notify')->default(1);
             $table->timestamps();
             $table->foreign('reg_id')->references('id')->on('user_registrations')->onDelete('cascade');
         });

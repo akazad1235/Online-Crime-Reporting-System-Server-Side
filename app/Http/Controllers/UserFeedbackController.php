@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Feedback;
 use Illuminate\Http\Request;
-use DB;
+use Illuminate\Support\Facades\DB;
+use App\Models\Feedback;
 
-class FeedbackController extends Controller
+class UserFeedbackController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,11 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-       // return Feedback::get();
-        return  DB::table('feedback')
-                ->leftJoin('user_registrations', 'feedback.reg_id', '=', 'user_registrations.id')
-                ->where('approve', 1)
-                ->select('feedback.*', 'user_registrations.image', 'user_registrations.name')
-                ->get();
+       $getFeedback = DB::table('feedback')
+        ->leftJoin('user_registrations', 'feedback.reg_id', '=', 'user_registrations.id')
+        ->select('feedback.*', 'user_registrations.name', 'user_registrations.email')
+        ->get();
+        return view('pages.Feedback.manageFeedback', compact('getFeedback'));
     }
 
     /**
@@ -31,7 +29,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -42,23 +40,9 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request->all();
-      //  return response()->json(['success'=>$request->all()]);
-        $profession = $request->profession;
-        $desc = $request->desc;
-        $id = $request->reg_id;
-        $data = [
-            'profession' => $profession,
-            'desc' => $desc,
-            'reg_id' => $id
-        ];
+        $id = $request->id;
 
-        $result = Feedback::create($data);
-        if($result){
-            return response()->json(['success'=>'Feedback Added Success', 'status'=>200]);
-        }else{
-            return response()->json(['error'=>'Feedback Added Faild', 'status'=>203]);
-        }
+       return Feedback::find($id);
     }
 
     /**
@@ -69,7 +53,7 @@ class FeedbackController extends Controller
      */
     public function show($id)
     {
-        return 'update';
+        //
     }
 
     /**
@@ -92,7 +76,17 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $approveId = $request->approve;
+    
+        $approveStatus = $request->approve;
+        $getStd = Feedback::find($id);
+        if ($getStd) {
+            $getStd->approve = $approveStatus;
+            $getStd->save();
+            return 'success Status';
+        }else{
+            return 'faild status';
+        }
     }
 
     /**
