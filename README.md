@@ -31,11 +31,13 @@ Activities of Upser Admin
 ## Technologys are Used
 - Laraverl
 - React js
+- Javascript
 - Mysql
 - Rest api
 - Axios
 - Bootstrap
 - Html5
 - Css3
+- Dom Manipulation
 
 
