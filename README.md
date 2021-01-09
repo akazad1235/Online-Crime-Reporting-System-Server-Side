@@ -1,11 +1,8 @@
 
 # Online Crime Reporiting System
 
-<p align="center"><a href="http://ecrime.azadhosen.com/" target="_blank">User Side</a> || <a href="http://admin-ecrime.azadhosen.com/" target="_blank">Admin</a></p>
-<p align="center">
-<a href="http://ecrime.azadhosen.com/">Live Client-Side</a>
-<a href="http://admin-ecrime.azadhosen.com/">Live Server-Side</a>
-</p>
+<p align="center"><a href="http://ecrime.azadhosen.com/" target="_blank">User Side</a> | <a href="http://admin-ecrime.azadhosen.com/" target="_blank">Admin</a></p>
+
 ## About My Project
 
 The main purpose of developing the online crime reporting system is for the welfare and safety of the public. Due to some factors in today’s time public sometimes do not trust the government officials, due to this they don’t ever want to go the station and file a report. So this system will reconstruct the bridge between the two - public and government officials respectively
