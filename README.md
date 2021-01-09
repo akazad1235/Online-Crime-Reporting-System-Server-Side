@@ -1,7 +1,7 @@
 
 # Online Crime Reporiting System
 
-<p align="center"><a href="http://ecrime.azadhosen.com/" target="_blank">User Side</a> | <a href="http://admin-ecrime.azadhosen.com/" target="_blank">Admin</a></p>
+<p align="center"><a href="http://ecrime.azadhosen.com/" target="_blank">Live User-Side</a> | <a href="http://admin-ecrime.azadhosen.com/" target="_blank">Live Admin</a></p>
 
 ## About My Project
 
