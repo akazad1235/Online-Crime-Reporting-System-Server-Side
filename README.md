@@ -1,16 +1,19 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="http://ecrime.azadhosen.com/" target="_blank">Online Crime Reporting System</a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About My Project
 
-## About Laravel
+The main purpose of developing the online crime reporting system is for the welfare and safety of the public. Due to some factors in today’s time public sometimes do not trust the government officials, due to this they don’t ever want to go the station and file a report. So this system will reconstruct the bridge between the two - public and government officials respectively
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+There are two kinds of admin part
+1. Super Admin
+2. Admin
+3. User
 
+Activitice of Upser Admin: 
+- In this module, Super admin will assign police-officer to their representative police station with proper data
+- Super admin will update new admin police officer. Same way Super admin can register different police station and also if police station shifted from one place to another than Super admin will update the database
+- If any case is pending for long time then super admin can send a Notification. Super Admin also can control the whole server
+- Super Admin can easily manage a full system system
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
 - Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
