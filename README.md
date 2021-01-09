@@ -1,5 +1,5 @@
 
-# Online Crime Reporiting System
+# Online Crime Reporting System
 
 <p align="center"><a href="http://ecrime.azadhosen.com/" target="_blank">Live User-Side</a> | <a href="http://admin-ecrime.azadhosen.com/" target="_blank">Live Admin</a></p>
 
