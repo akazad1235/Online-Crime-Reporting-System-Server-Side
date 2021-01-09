@@ -7,22 +7,23 @@ The main purpose of developing the online crime reporting system is for the welf
 There are two kinds of admin part
 1. Super Admin
 2. Admin
-3. User
 
-Activitice of Upser Admin: 
+<h5> Activitice of Upser Admin<h5> 
 - In this module, Super admin will assign police-officer to their representative police station with proper data
 - Super admin will update new admin police officer. Same way Super admin can register different police station and also if police station shifted from one place to another than Super admin will update the database
 - If any case is pending for long time then super admin can send a Notification. Super Admin also can control the whole server
 - Super Admin can easily manage a full system system
+- Super Admin can <a href="http://ecrime.azadhosen.com/viewComplain" target="_blank">see</a> all FIR from victim user & send status about therir FIR
+- Manage all Admin and assign user rules permession 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
+<h5> Activitice of Admin<h5> 
+- In this module, first of admin will login with proper email-id and password which is already registered by Super Admin. 
+- Admin can see criminal information
+- Here admin cannot update his/her personal information
+- Admin can also see the feedback/complaint which is given by users
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
 
 ## Learning Laravel
 
