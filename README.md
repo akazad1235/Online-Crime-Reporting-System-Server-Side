@@ -11,7 +11,7 @@ The main purpose of developing the online crime reporting system is for the welf
 1. Super Admin
 2. Admin
 
- Activities of Upser Admin
+ Activities of User Admin
 - In this module, Super admin will assign police-officer to their representative police station with proper data
 - Super admin will update new admin police officer. Same way Super admin can register different police station and also if police station shifted from one place to another than Super admin will update the database
 - If any case is pending for long time then super admin can send a Notification. Super Admin also can control the whole server
